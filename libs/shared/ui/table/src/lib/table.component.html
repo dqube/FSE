@@ -1,0 +1,27 @@
+<nz-table #nuTable [nzData]="nuData">
+  <thead>
+    <tr>
+      <ng-container *ngFor="let column of nuColumns">
+        <th
+          *ngIf="!(column.hidden && column.hidden())"
+          [nzWidth]="column.width!"
+          [ngStyle]="column.style ? column.style : {}"
+          [nzShowSort]="column.sortable"
+          [nzColumnKey]="column.key"
+          (nzSortChange)="thSort(column.key, $event)">
+            {{column.name}}
+        </th>
+      </ng-container>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of nuTable.data">
+      <ng-container *ngFor="let column of nuColumns">
+        <td *ngIf="!(column.hidden && column.hidden())"
+          [ngStyle]="column.style ? column.style : {}">
+          {{data[column['key']]}}
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
+</nz-table>

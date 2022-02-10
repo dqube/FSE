@@ -13,6 +13,7 @@ type NzTooltipPlacement = 'top' | 'left' | 'right' | 'bottom' | 'topLeft' | 'top
   template: `
     <nz-button-group
       [nzSize]="nzSize">
+      <<ng-container *ngIf="to.options">
         <span
          *ngFor="let option in to.options"
           nz-tooltip
@@ -40,6 +41,7 @@ type NzTooltipPlacement = 'top' | 'left' | 'right' | 'bottom' | 'topLeft' | 'top
                 {{ option.label }}
             </button>
         </span>
+        </ng-container>
     </nz-button-group>
   `,
 })

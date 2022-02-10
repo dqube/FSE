@@ -11,6 +11,7 @@
     "shared-styles": "libs/shared/styles",
     "shared-ui-form": "libs/shared/ui/form",
     "shared-ui-forms": "libs/shared/ui/forms",
+    "shared-ui-table": "libs/shared/ui/table",
     "skilltracker": "apps/skilltracker",
     "skilltracker-e2e": "apps/skilltracker-e2e"
   }
