@@ -20,7 +20,7 @@ type NzLegacyButtonType = 'primary' | 'default' | 'dashed' | 'link' | 'text';
       (click)="onClick()"
     >
       <i *ngIf="to['icon']" nz-icon [nzType]="to['icon']"></i>
-      <span *ngIf="to['text']">{{ to.text }}</span>
+      <span *ngIf="to['text']">{{ to['text'] }}</span>
     </button>
   `,
   styles: [

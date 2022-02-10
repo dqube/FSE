@@ -1,9 +1,5 @@
 import {
-  Component,
-  ChangeDetectionStrategy,
-  AfterViewInit,
-  ViewChild,
-  OnInit,
+  ChangeDetectionStrategy, Component
 } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 @Component({
@@ -12,7 +8,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
     <nz-tree-select
       [formControl]="formControl"
       [formlyAttributes]="field"
-      [nzPlaceHolder]="to.placeholder"
+      [nzPlaceHolder]="nzPlaceHolder"
       [nzAllowClear]="to['treeSelect']?.allowClear"
       [nzShowIcon]="to['treeSelect']?.showIcon"
       [nzShowSearch]="to['treeSelect']?.showSearch"
@@ -44,6 +40,8 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldTreeSelect extends FieldType<FieldTypeConfig> implements OnInit {
-  ngOnInit(): void {}
+export class FormlyFieldTreeSelect extends FieldType<FieldTypeConfig>  {
+  get nzPlaceHolder(): string {
+    return this.to!['nzPlaceHolder'];
+  }
 }

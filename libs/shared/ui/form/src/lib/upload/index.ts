@@ -3,7 +3,7 @@ import {
   NzUploadChangeParam,
   NzUploadFile,
   NzUploadTransformFileType,
-  UploadFilter,
+  UploadFilter
 } from 'ng-zorro-antd/upload';
 import { Observable, Subscription } from 'rxjs';
 
@@ -35,7 +35,7 @@ export interface UploadFormly {
   /**
    * 通过覆盖默认的上传行为，可以自定义自己的上传实现；注意：务必使用 => 定义处理方法。
    */
-  customRequest?: (item) => Subscription;
+  customRequest?: (item:any) => Subscription;
 
   /**
    * 上传所需参数或返回上传参数的方法；注意：务必使用 => 定义处理方法。

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FieldType, FieldTypeConfig, FormlyFieldConfig } from '@ngx-formly/core';
+import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
   selector: 'formly-field-tabs',
@@ -23,22 +23,22 @@ import { FieldType, FieldTypeConfig, FormlyFieldConfig } from '@ngx-formly/core'
     >
       <nz-tab
         *ngFor="let tab of field.fieldGroup; let i = index; let last = last"
-        [nzTitle]="tab.templateOptions?.label"
-        [nzForceRender]="tab.templateOptions?.tab?.forceRender"
-        [nzDisabled]="tab.templateOptions.tab?.disabled"
+        [nzTitle]="tab.templateOptions!['label'] || to['tabs']?.label"
+        [nzForceRender]="tab.templateOptions!['tab']['forceRender']"
+        [nzDisabled]="tab.templateOptions!['tab']['disabled']"
         (nzClick)="
-          tab.templateOptions.tab?.click && tab.templateOptions.tab?.click()
+          tab.templateOptions!['tab']['click'] && tab.templateOptions!['tab']['click()']
         "
         (nzDeselect)="
-          tab.templateOptions.tab?.deselect &&
-            tab.templateOptions.tab?.deselect()
+          tab.templateOptions!['tab']['deselect'] &&
+            tab.templateOptions!['tab']['deselect()']
         "
         (nzSelect)="
-          tab.templateOptions.tab?.select && tab.templateOptions.tab?.select()
+          tab.templateOptions!['tab'].select && tab.templateOptions!['tab'].select()
         "
         (nzContextmenu)="
-          tab.templateOptions.tab?.contextmenu &&
-            tab.templateOptions.tab?.contextmenu($event)
+          tab.templateOptions!['tab'].contextmenu &&
+            tab.templateOptions!['tab'].contextmenu($event)
         "
       >
         <formly-field [field]="tab"></formly-field>
@@ -46,4 +46,6 @@ import { FieldType, FieldTypeConfig, FormlyFieldConfig } from '@ngx-formly/core'
     </nz-tabset>
   `,
 })
-export class FormlyFieldTabs extends FieldType<FieldTypeConfig> {}
+export class FormlyFieldTabs extends FieldType<FieldTypeConfig> {
+ 
+}

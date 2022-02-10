@@ -1,5 +1,5 @@
 import {
-  ChangeDetectionStrategy, Component, OnInit
+  ChangeDetectionStrategy, Component
 } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
@@ -37,7 +37,6 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [nzIconRender]="to['upload']?.iconRender"
       [nzFileListRender]="to['upload']?.fileListRender"
       [text]="to['upload']?.text"
-      [nzType]="to.type"
       (nzFileListChange)="
         to['upload']?.fileListChange && to['upload']?.fileListChange($event)
       "
@@ -47,6 +46,6 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldUpload extends FieldType<FieldTypeConfig> implements OnInit {
-  ngOnInit(): void {}
+export class FormlyFieldUpload extends FieldType<FieldTypeConfig>  {
+ 
 }

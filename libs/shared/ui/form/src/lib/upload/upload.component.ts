@@ -1,57 +1,16 @@
 import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  TemplateRef,
-  ViewChild,
-  ViewEncapsulation,
+  ChangeDetectionStrategy, Component,
+  Input, OnInit, ViewChild,
+  ViewEncapsulation
 } from '@angular/core';
 import {
-  AbstractControl,
-  ControlValueAccessor,
-  FormGroup,
-  NG_VALUE_ACCESSOR,
-  ValidationErrors,
-  Validator,
+  ControlValueAccessor, NG_VALUE_ACCESSOR
 } from '@angular/forms';
-import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { OnChangeType, OnTouchedType } from 'ng-zorro-antd/core/types';
 import {
-  NzTransferComponent,
-  TransferChange,
-  TransferItem,
-  TransferSearchChange,
-  TransferSelectChange,
-} from 'ng-zorro-antd/transfer';
-import {
-  NzUploadChangeParam,
   NzUploadComponent,
-  NzUploadFile,
+  NzUploadFile
 } from 'ng-zorro-antd/upload';
-import { CascaderFormly } from '../cascader';
-import { CheckboxFormly } from '../checkbox';
-import {
-  DateFormly,
-  RangeDateFormly,
-} from '../date';
-import {
-  AutocompleteFormly,
-  InputFormly,
-  InputGroupFormly,
-  NumberFormly,
-} from '../input';
-import { RadioFormly } from '../radio';
-import { RateFormly } from '../rate';
-import { SelectFormly } from '../select';
-import { SliderFormly } from '../slider';
-import { SwitchFormly } from '../switch';
-import { TimeFormly } from '../time';
-import { TransferFormly } from '../transfer';
-import { of } from 'rxjs';
-import { delay, timeInterval } from 'rxjs/operators';
 
 @Component({
   selector: 'formly-upload',
@@ -80,7 +39,7 @@ import { delay, timeInterval } from 'rxjs/operators';
       [nzPreviewFile]="nzPreviewFile"
       [nzPreviewIsImage]="nzPreviewIsImage"
       [nzRemove]="nzRemove"
-      (nzChange)="change($event)"
+   
       [nzDownload]="nzDownload"
       [nzTransformFile]="nzTransformFile"
       [nzIconRender]="nzIconRender"
@@ -108,14 +67,15 @@ export class UploadComponent
   extends NzUploadComponent
   implements OnInit, ControlValueAccessor
 {
-  @ViewChild('upload', { static: true }) transfer: NzUploadComponent;
+  @ViewChild('upload', { static: true })
+  transfer!: NzUploadComponent;
 
   /**
-   * 按钮文本
    * @default 点击上传
    */
-  @Input() text: string = '点击上传';
-  @Input() resultMap: (items: NzUploadFile[]) => any[];
+  @Input()  text = 'Click Upload';
+  @Input()
+  resultMap!: (items: NzUploadFile[]) => any[];
 
   onChange: OnChangeType = () => {};
   onTouched: OnTouchedType = () => {};
@@ -134,20 +94,17 @@ export class UploadComponent
     this.nzFileListChange.emit(list);
   }
 
-  change(value: NzUploadChangeParam) {
-    this.nzChange.emit(value);
-    if (['removed', 'success'].includes(value.type)) {
-      if (this.resultMap instanceof Function) {
-        this.onChange(
-          this.resultMap(value.fileList.filter((x) => x.status === 'done'))
-        );
-      } else {
-        this.onChange(value.fileList.filter((x) => x.status === 'done'));
-      }
-    }
-  }
+  // change(value: NzUploadChangeParam) {
+  //   this.nzChange.emit(value);
+  //   if (['removed', 'success'].includes(value?.type)) {
+  //     if (this.resultMap instanceof Function) {
+  //       this.onChange(
+  //         this.resultMap(value.fileList.filter((x) => x.status === 'done'))
+  //       );
+  //     } else {
+  //       this.onChange(value.fileList.filter((x) => x.status === 'done'));
+  //     }
+  //   }
+  // }
 
-  ngOnChanges() {}
-
-  ngOnInit(): void {}
 }

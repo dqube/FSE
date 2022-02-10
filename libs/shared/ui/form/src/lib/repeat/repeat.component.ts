@@ -24,8 +24,8 @@ import { FieldArrayType } from '@ngx-formly/core';
       [nzBlock]="to['addBtnBlock']"
       (click)="add(undefined, this.field.defaultValue, { markAsDirty: false })"
     >
-      <i *ngIf="to.addBtnIcon" nz-icon [nzType]="to.addBtnIcon"></i>
-      <span *ngIf="to.addBtnText">{{to.addBtnText}}</span>
+      <i *ngIf="to['addBtnIcon']" nz-icon [nzType]="to['addBtnIcon']"></i>
+      <span *ngIf="to['addBtnText']">{{to['addBtnText']}}</span>
     </a>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

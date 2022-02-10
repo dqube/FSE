@@ -30,15 +30,19 @@ export class FormlyFormComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
 
-  @Input() form: FormGroup | FormArray;
+  @Input()
+  form!: FormGroup | FormArray;
 
   @Input() model: any;
 
-  @Input() fieldGroup: FormlyFieldConfig[];
-  @Input() fields: FormlyFieldConfig[];
+  @Input()
+  fieldGroup!: FormlyFieldConfig[];
+  @Input()
+  fields!: FormlyFieldConfig[];
 
-  @Input() options: FormlyFormOptions;
-  layout: string;
+  @Input()
+  options!: FormlyFormOptions;
+  layout!: string;
 
   @Output() fieldsChange = new EventEmitter<FormlyFieldConfig[]>();
   @Output() modelChange: EventEmitter<any> = new EventEmitter();

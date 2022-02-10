@@ -1,23 +1,16 @@
 import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewChild,
-  OnInit,
-  AfterViewInit,
-  TemplateRef,
-  ChangeDetectorRef,
+  ChangeDetectionStrategy, Component, OnInit, ViewChild
 } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
-
 import { NzSelectComponent } from 'ng-zorro-antd/select';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'formly-field-select',
   template: `
     <nz-select
       #select
-      [nzPlaceHolder]="to.placeholder"
+      [nzPlaceHolder]="nzPlaceHolder"
       [formControl]="formControl"
       [formlyAttributes]="field"
       [compareWith]="to['select']?.compareWith"
@@ -73,10 +66,14 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFieldSelect extends FieldType<FieldTypeConfig> implements OnInit {
-  @ViewChild('select', { static: true }) select: NzSelectComponent;
+  @ViewChild('select', { static: true })
+  select!: NzSelectComponent;
   ngOnInit(): void {
     if (this.to['select']?.filterOption instanceof Function) {
       this.select.nzFilterOption = this.to['select']?.filterOption;
     }
+  }
+  get nzPlaceHolder(): string {
+    return this.to!['nzPlaceHolder'];
   }
 }

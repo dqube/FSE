@@ -9,7 +9,7 @@ import { FieldWrapper } from '@ngx-formly/core';
     <nz-form-item>
       <ng-container *ngIf="to.label && to['hideLabel'] !== true">
         <nz-form-label
-          [nzRequired]="to.required && to.hideRequiredMarker !== true"
+          [nzRequired]="to.required && to['hideRequiredMarker'] !== true"
           [nzFor]="id">
             {{ to.label }}
         </nz-form-label>
@@ -39,11 +39,11 @@ export class FormlyFieldInputGroup extends FieldWrapper {
     if (this.key) {
       return this.showError ? 'error' : 'success';
     } else {
-      return this.group.filter(
+      return this.group?.filter(
         (x) =>
           x.formControl?.invalid &&
           (x.formControl?.touched ||
-            x.options.parentForm?.submitted ||
+            x.options?.parentForm?.submitted ||
             !!this.field.validation?.show)
       ).length
         ? 'error'

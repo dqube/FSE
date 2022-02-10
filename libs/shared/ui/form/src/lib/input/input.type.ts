@@ -1,10 +1,7 @@
 import {
-  Component,
-  ChangeDetectionStrategy,
+  ChangeDetectionStrategy, Component
 } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
-import { NzAutocompleteComponent } from 'ng-zorro-antd/auto-complete';
-import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
 
 @Component({
   selector: 'formly-field-input',
@@ -12,42 +9,42 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
     <ng-container [ngSwitch]="to.type">
       <!-- <nz-input-group
         *ngSwitchCase="'input'"
-        [nzPrefixIcon]="to.input?.prefixIcon"
-        [nzSuffixIcon]="to.input?.suffixIcon"
-        [nzAddOnAfterIcon]="to.input?.addOnAfterIcon"
-        [nzAddOnBeforeIcon]="to.input?.addOnBeforeIcon"
-        [nzAddOnBefore]="to.input?.addOnBefore"
-        [nzAddOnAfter]="to.input?.addOnAfter"
-        [nzPrefix]="to.input?.prefix"
-        [nzSuffix]="to.input?.suffix"
+        [nzPrefixIcon]="to['input']['prefixIcon']"
+        [nzSuffixIcon]="to['input']['suffixIcon']"
+        [nzAddOnAfterIcon]="to['input']['addOnAfterIcon']"
+        [nzAddOnBeforeIcon]="to['input']['addOnBeforeIcon']"
+        [nzAddOnBefore]="to['input']['addOnBefore']"
+        [nzAddOnAfter]="to['input']['addOnAfter']"
+        [nzPrefix]="to['input']['prefix']"
+        [nzSuffix]="to['input']['suffix']"
       > -->
       <input
         *ngSwitchCase="'input'"
         nz-input
         [placeholder]="to.placeholder"
         [formControl]="formControl"
-        [nzBorderless]="to.input?.borderless"
+        [nzBorderless]="to['input']['borderless']"
         [formlyAttributes]="field"
       />
       <!-- </nz-input-group> -->
 
       <nz-input-group
         *ngSwitchCase="'password'"
-        [nzPrefixIcon]="to.input?.prefixIcon"
-        [nzSuffixIcon]="to.input?.suffixIcon"
-        [nzAddOnAfterIcon]="to.input?.addOnAfterIcon"
-        [nzAddOnBeforeIcon]="to.input?.addOnBeforeIcon"
-        [nzAddOnBefore]="to.input?.addOnBefore"
-        [nzAddOnAfter]="to.input?.addOnAfter"
-        [nzPrefix]="to.input?.prefix"
-        [nzSuffix]="to.input?.suffix"
+        [nzPrefixIcon]="to['input']['prefixIcon']"
+        [nzSuffixIcon]="to['input']['suffixIcon']"
+        [nzAddOnAfterIcon]="to['input']['addOnAfterIcon']"
+        [nzAddOnBeforeIcon]="to['input']['addOnBeforeIcon']"
+        [nzAddOnBefore]="to['input']['addOnBefore']"
+        [nzAddOnAfter]="to['input']['addOnAfter']"
+        [nzPrefix]="to['input']['prefix']"
+        [nzSuffix]="to['input']['suffix']"
       >
         <input
           type="password"
           nz-input
           [placeholder]="to.placeholder"
           [formControl]="formControl"
-          [nzBorderless]="to.input?.borderless"
+          [nzBorderless]="to['input']['borderless']"
           [formlyAttributes]="field"
         />
       </nz-input-group>
@@ -55,12 +52,10 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
       <nz-input-number
         #inputNumber
         *ngSwitchCase="'number'"
-        [placeholder]="to.placeholder"
         [formControl]="formControl"
-        [nzBorderless]="to.input?.borderless"
         [formlyAttributes]="field"
-        [nzMax]="to.max"
-        [nzMin]="to.min"
+        [nzMax]="nzMax"
+        [nzMin]="nzMin"
         [nzPrecision]="to['number']?.precision"
         [nzPrecisionMode]="to['number']?.precisionMode"
         [nzStep]="to['number']?.step"
@@ -68,36 +63,36 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
         (ngModelChange)="
           to['number'].modelChange && to['number']?.modelChange($event)
         "
-        [ngStyle]="width"
+        [ngStyle]="width!"
         [nzParser]="to['number']?.parser"      
          
       ></nz-input-number>
    <!-- [nzFormatter]="to['number']?.formatter"-->
       <ng-container *ngSwitchCase="'textarea'">
         <nz-textarea-count
-          *ngIf="to.textarea?.maxCharacterCount; else textarea"
-          [nzMaxCharacterCount]="to.textarea?.maxCharacterCount"
+          *ngIf="to['textarea']['maxCharacterCount']; else textarea"
+          [nzMaxCharacterCount]="to['textarea']['maxCharacterCount']"
         >
           <textarea
-            [rows]="to.textarea?.rows"
+            [rows]="to['textarea']['rows']"
             nz-input
             [placeholder]="to.placeholder"
             [formControl]="formControl"
-            [nzBorderless]="to.textarea?.borderless"
+            [nzBorderless]="to['textarea']['borderless']"
             [formlyAttributes]="field"
-            [nzAutosize]="to.textarea?.autosize"
+            [nzAutosize]="to['textarea']['autosize']"
           ></textarea>
         </nz-textarea-count>
 
         <ng-template #textarea>
           <textarea
-            [rows]="to.textarea?.rows"
+            [rows]="to['textarea']['rows']"
             nz-input
             [placeholder]="to.placeholder"
             [formControl]="formControl"
-            [nzBorderless]="to.textarea?.borderless"
+            [nzBorderless]="to['textarea']['borderless']"
             [formlyAttributes]="field"
-            [nzAutosize]="to.textarea?.autosize"
+            [nzAutosize]="to['textarea']['autosize']"
           ></textarea>
         </ng-template>
       </ng-container>
@@ -146,10 +141,16 @@ import { NzInputNumberComponent } from 'ng-zorro-antd/input-number';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFieldInput extends FieldType<FieldTypeConfig> {
-  get width() {
+  get width() : any | undefined {
     if (this.to.type === 'number' && this.to['number']?.width) {
-      return { width: this.to['number'].width };
+      return { width: this.to!['number'].width };
     }
     return '';
+  }
+  get nzMax(): number {
+    return this.to!['max'];
+  }
+  get nzMin(): number {
+    return this.to!['min'];
   }
 }

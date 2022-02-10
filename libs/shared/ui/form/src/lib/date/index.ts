@@ -98,9 +98,9 @@ export interface DateFormly extends BaseDateFormly {
    * 不可选择的时间
    */
   disabledTime?: (current: Date) => {
-    nzDisabledHours;
-    nzDisabledMinutes;
-    nzDisabledSeconds;
+    nzDisabledHours: any;
+    nzDisabledMinutes: any;
+    nzDisabledSeconds: any;
   };
 
   /**
@@ -153,7 +153,7 @@ export interface RangeDateFormly extends BaseDateFormly {
   disabledTime?: (
     current: Date,
     partial: 'start' | 'end'
-  ) => { nzDisabledHours; nzDisabledMinutes; nzDisabledSeconds };
+  ) => { nzDisabledHours: any; nzDisabledMinutes: any; nzDisabledSeconds: any };
 
   /**
    * 点击确定按钮的回调

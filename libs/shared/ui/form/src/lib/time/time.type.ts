@@ -1,8 +1,5 @@
 import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewChild,
-  OnInit,
+  ChangeDetectionStrategy, Component, OnInit, ViewChild
 } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 import { NzTimePickerComponent } from 'ng-zorro-antd/time-picker';
@@ -29,7 +26,7 @@ import { NzTimePickerComponent } from 'ng-zorro-antd/time-picker';
       [nzHourStep]="to['time']?.hourStep"
       [nzMinuteStep]="to['time']?.minuteStep"
       [nzSecondStep]="to['time']?.secondStep"
-      ([nzOpen])="(to['time']?.open)"
+      [nzOpen]="(to['time']?.open)"
       [nzPopupClassName]="to['time']?.popupClassName"
       [nzUse12Hours]="to['time']?.use12Hours"
       (ngModelChange)="to['time']?.ngModelChange && to['time']?.ngModelChange($event)"
@@ -39,7 +36,8 @@ import { NzTimePickerComponent } from 'ng-zorro-antd/time-picker';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFieldTime  extends FieldType<FieldTypeConfig> implements OnInit {
-  @ViewChild('time', { static: true }) time: NzTimePickerComponent;
+  @ViewChild('time', { static: true })
+  time!: NzTimePickerComponent;
   ngOnInit(): void {
     if (
       this.to['time']?.suffixIcon !== null &&

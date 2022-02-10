@@ -17,7 +17,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         [nzFormat]="to['date']?.format"
         [nzInputReadOnly]="to['date']?.inputReadOnly"
         [nzMode]="to['date']?.mode"
-        [nzPlaceHolder]="to.placeholder"
+        [nzPlaceHolder]="nzPlaceHolder"
         [nzPopupStyle]="to['date']?.popupStyle"
         [nzRenderExtraFooter]="to['date']?.renderExtraFooter"
         [nzSuffixIcon]="to['date']?.suffixIcon ? to['date']?.suffixIcon : 'calendar'"
@@ -38,12 +38,12 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         [nzAllowClear]="to['range']?.allowClear"
         [nzBackdrop]="to['range']?.backdrop"
         [nzDefaultPickerValue]="to['range']?.defaultPickerValue"
-        [nzDisabledrange]="to['range']?.disabledDate"
+        [nzDisabledDate]="to['range']?.disabledDate"
         [nzDropdownClassName]="to['range']?.dropdownClassName"
         [nzFormat]="to['range']?.format"
         [nzInputReadOnly]="to['range']?.inputReadOnly"
         [nzMode]="to['range']?.mode"
-        [nzPlaceHolder]="to.placeholder"
+        [nzPlaceHolder]="nzPlaceHolder"
         [nzPopupStyle]="to['range']?.popupStyle"
         [nzRenderExtraFooter]="to['range']?.renderExtraFooter"
         [nzSuffixIcon]="to['date']?.suffixIcon ? to['date']?.suffixIcon : 'calendar'"
@@ -64,4 +64,12 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldDate extends FieldType<FieldTypeConfig> {}
+export class FormlyFieldDate extends FieldType<FieldTypeConfig> {
+  get nzPlaceHolder(): string {
+    return this.to!['nzPlaceHolder'];
+  }
+
+  get nzDisabledDate(): (current: Date) => boolean {
+    return this.to!['range']['disabledDate'];
+  }
+}

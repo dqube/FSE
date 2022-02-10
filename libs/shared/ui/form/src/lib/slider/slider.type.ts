@@ -1,12 +1,9 @@
 import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewChild,
-  AfterViewInit,
+  AfterViewInit, ChangeDetectionStrategy, Component, ViewChild
 } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
-
 import { NzSliderComponent } from 'ng-zorro-antd/slider';
+
 
 @Component({
   selector: 'formly-field-slider',
@@ -36,7 +33,8 @@ import { NzSliderComponent } from 'ng-zorro-antd/slider';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFieldSlider extends FieldType<FieldTypeConfig> implements AfterViewInit {
-  @ViewChild('slider', { static: false }) slider: NzSliderComponent;
+  @ViewChild('slider', { static: false })
+  slider!: NzSliderComponent;
 
   ngAfterViewInit(): void {
     if (this.to['slider']?.marks) {

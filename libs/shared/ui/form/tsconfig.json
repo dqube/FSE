@@ -10,17 +10,30 @@
       "path": "./tsconfig.lib.prod.json"
     }
   ],
+  // "compilerOptions": {
+  //   "forceConsistentCasingInFileNames": true,
+  //   "strict": false,
+  //   "noImplicitOverride": false,
+  //   "noPropertyAccessFromIndexSignature": false,
+  //   "noImplicitReturns": true,
+  //   "noFallthroughCasesInSwitch": true
+  // },
+  // "angularCompilerOptions": {
+  //   "strictInjectionParameters": true,
+  //   "strictInputAccessModifiers": true,
+  //   "strictTemplates": false
+  // }
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
-    "strict": false,
-    "noImplicitOverride": false,
-    "noPropertyAccessFromIndexSignature": false,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": false
+    "strictTemplates": true
   }
 }

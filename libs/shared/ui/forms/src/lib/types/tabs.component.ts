@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
@@ -23,11 +23,13 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [nzCanDeactivate]="to.nzCanDeactivate"
       <nz-tab
         *ngFor="let tab of field.fieldGroup;"
-        (nzTitle)="tab.templateOptions?.label"
+        [nzTitle]="tab.templateOptions!['label']?? ''"
         [nzDisabled]="tab.templateOptions?.disabled">
           <formly-field [field]="tab"></formly-field>
       </nz-tab>
     </nz-tabset>
   `,
 })
-export class FormlyFieldTabsComponent extends FieldType<FieldTypeConfig> { }
+export class FormlyFieldTabsComponent extends FieldType<FieldTypeConfig> { 
+
+}

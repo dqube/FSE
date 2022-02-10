@@ -1,12 +1,7 @@
 import {
-  Component,
-  ChangeDetectionStrategy,
-  AfterViewInit,
-  ViewChild,
-  OnInit,
+  ChangeDetectionStrategy, Component, OnInit, ViewChild
 } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
-import { NzTimePickerComponent } from 'ng-zorro-antd/time-picker';
 import { NzTransferComponent } from 'ng-zorro-antd/transfer';
 
 @Component({
@@ -44,7 +39,8 @@ import { NzTransferComponent } from 'ng-zorro-antd/transfer';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormlyFieldTransfer extends FieldType<FieldTypeConfig> implements OnInit {
-  @ViewChild('transfer', { static: true }) transfer: NzTransferComponent;
+  @ViewChild('transfer', { static: true })
+  transfer!: NzTransferComponent;
   ngOnInit(): void {
     if (
       this.to['transfer']?.canMove !== null &&

@@ -6,8 +6,8 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   template: `
     <nz-cascader
       #cascader
-      [nzPlaceHolder]="to.placeholder"
-      [nzOptions]="to.options"
+      [nzPlaceHolder]="nzPlaceHolder"
+      [nzOptions]="nzOptions"
       [formControl]="formControl"
       [formlyAttributes]="field"
       [nzAllowClear]="to['cascader']?.allowClear"
@@ -42,4 +42,11 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormlyFieldCascader extends FieldType<FieldTypeConfig> {}
+export class FormlyFieldCascader extends FieldType<FieldTypeConfig> {
+  get nzOptions(): object[] {
+    return this.to!['nzOptions'];
+  }
+  get nzPlaceHolder(): string {
+    return this.to!['nzPlaceHolder'];
+  }
+}
