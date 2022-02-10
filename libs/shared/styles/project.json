@@ -1,0 +1,8 @@
+{
+  "projectType": "library",
+  "root": "libs/shared/styles",
+  "sourceRoot": "libs/shared/styles/src",
+  "prefix": "fse",
+  "targets": {},
+  "tags": []
+}

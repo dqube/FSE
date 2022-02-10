@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/admin/feature/login",
+  "sourceRoot": "libs/admin/feature/login/src",
+  "prefix": "admin",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/admin/feature/login"],
+      "options": {
+        "project": "libs/admin/feature/login/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/admin/feature/login/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/admin/feature/login/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/admin/feature/login"],
+      "options": {
+        "jestConfig": "libs/admin/feature/login/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/admin/feature/login/src/**/*.ts",
+          "libs/admin/feature/login/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["admin", "login"]
+}

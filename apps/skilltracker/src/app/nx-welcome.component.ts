@@ -13,21 +13,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
      * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      -->
     <style>
-      html {
-        -webkit-text-size-adjust: 100%;
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-          'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
-          'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-          'Noto Color Emoji';
-        line-height: 1.5;
-        tab-size: 4;
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: inherit;
-        line-height: inherit;
-        margin: 0;
-      }
+     
+    
       h1,
       h2,
       p,
@@ -42,19 +29,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
         border-style: solid;
         border-color: currentColor;
       }
-      h1,
-      h2 {
-        font-size: inherit;
-        font-weight: inherit;
-      }
+     
       a {
         color: inherit;
         text-decoration: inherit;
       }
-      pre {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          'Liberation Mono', 'Courier New', monospace;
-      }
+      
       svg {
         display: block;
         vertical-align: middle;
@@ -838,6 +818,7 @@ nx affected:e2e</pre>
           </svg>
         </p>
       </div>
+      <img height="30" width="98" src="/assets/icon.png" />
     </div>
   `,
   encapsulation: ViewEncapsulation.None,

@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/profile/data-access",
+  "sourceRoot": "libs/profile/data-access/src",
+  "prefix": "fse",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/profile/data-access"],
+      "options": {
+        "project": "libs/profile/data-access/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/profile/data-access/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/profile/data-access/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/profile/data-access"],
+      "options": {
+        "jestConfig": "libs/profile/data-access/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/profile/data-access/src/**/*.ts",
+          "libs/profile/data-access/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["profile", "data"]
+}

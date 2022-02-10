@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/profile/feature/shell",
+  "sourceRoot": "libs/profile/feature/shell/src",
+  "prefix": "fse",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/profile/feature/shell"],
+      "options": {
+        "project": "libs/profile/feature/shell/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/profile/feature/shell/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/profile/feature/shell/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/profile/feature/shell"],
+      "options": {
+        "jestConfig": "libs/profile/feature/shell/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/profile/feature/shell/src/**/*.ts",
+          "libs/profile/feature/shell/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["profile", "shell"]
+}

@@ -16,9 +16,14 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/skilltracker/src/favicon.ico",
-          "apps/skilltracker/src/assets"
+          "apps/skilltracker/src/assets",
+          {
+            "input": "libs/shared/assets/src/assets",
+            "glob": "**/*",
+            "output": "/assets/"
+          }
         ],
-        "styles": ["apps/skilltracker/src/styles.scss"],
+        "styles": ["libs/shared/styles/src/scss/app.scss"],
         "scripts": []
       },
       "configurations": {
@@ -90,5 +95,6 @@
       }
     }
   },
-  "tags": []
+  "tags": [],
+  "implicitDependencies": ["shared-assets", "shared-styles"]
 }

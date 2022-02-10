@@ -1,0 +1,34 @@
+{
+  "projectType": "library",
+  "root": "libs/shared/ui/form",
+  "sourceRoot": "libs/shared/ui/form/src",
+  "prefix": "fse",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/shared/ui/form"],
+      "options": {
+        "project": "libs/shared/ui/form/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/shared/ui/form/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/shared/ui/form/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/ui/form/src/**/*.ts",
+          "libs/shared/ui/form/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["ui", "forms"]
+}

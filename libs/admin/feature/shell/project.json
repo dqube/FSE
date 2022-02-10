@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/admin/feature/shell",
+  "sourceRoot": "libs/admin/feature/shell/src",
+  "prefix": "admin",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/admin/feature/shell"],
+      "options": {
+        "project": "libs/admin/feature/shell/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/admin/feature/shell/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/admin/feature/shell/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/admin/feature/shell"],
+      "options": {
+        "jestConfig": "libs/admin/feature/shell/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/admin/feature/shell/src/**/*.ts",
+          "libs/admin/feature/shell/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["admin", "shell"]
+}
