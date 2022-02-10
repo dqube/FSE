@@ -20,7 +20,6 @@ import { NzOptionComponent } from 'ng-zorro-antd/select';
       [nzDisabled]="nzDisabled"
       [nzInputReadOnly]="nzInputReadOnly"
       [nzDisabledDate]="nzDisabledDate"
-      (nzLocale)="nzLocale"
       [nzPopupStyle]="nzPopupStyle"
       [nzDropdownClassName]="nzDropdownClassName"
       [nzSize]="nzSize"
@@ -47,7 +46,6 @@ import { NzOptionComponent } from 'ng-zorro-antd/select';
       [nzDisabled]="nzDisabled"
       [nzInputReadOnly]="nzInputReadOnly"
       [nzDisabledDate]="nzDisabledDate"
-      (nzLocale)="nzLocale"
       [nzPopupStyle]="nzPopupStyle"
       [nzDropdownClassName]="nzDropdownClassName"
       [nzSize]="nzSize"
@@ -69,7 +67,6 @@ import { NzOptionComponent } from 'ng-zorro-antd/select';
       [nzDisabled]="nzDisabled"
       [nzInputReadOnly]="nzInputReadOnly"
       [nzDisabledDate]="nzDisabledDate"
-      (nzLocale)="nzLocale"
       [nzPopupStyle]="nzPopupStyle"
       [nzDropdownClassName]="nzDropdownClassName"
       [nzSize]="nzSize"
@@ -92,7 +89,6 @@ import { NzOptionComponent } from 'ng-zorro-antd/select';
       [nzDisabled]="nzDisabled"
       [nzInputReadOnly]="nzInputReadOnly"
       [nzDisabledDate]="nzDisabledDate"
-      (nzLocale)="nzLocale"
       [nzPopupStyle]="nzPopupStyle"
       [nzDropdownClassName]="nzDropdownClassName"
       [nzSize]="nzSize"
@@ -115,7 +111,6 @@ import { NzOptionComponent } from 'ng-zorro-antd/select';
       [nzDisabled]="nzDisabled"
       [nzInputReadOnly]="nzInputReadOnly"
       [nzDisabledDate]="nzDisabledDate"
-      (nzLocale)="nzLocale"
       [nzPopupStyle]="nzPopupStyle"
       [nzDropdownClassName]="nzDropdownClassName"
       [nzSize]="nzSize"
@@ -157,11 +152,7 @@ export class FormlyFieldDatePickerComponent extends FieldType<FieldTypeConfig> {
   get nzDisabledDate(): (current: Date) => boolean {
     return this.to!['nzDisabledDate'];
   }
-
-  get nzLocale(): object {
-    return this.to!['nzLocale'];
-  }
-
+ 
   get nzPopupStyle(): object {
     return this.to!['nzPopupStyle'] || { position: 'relative' };
   }
