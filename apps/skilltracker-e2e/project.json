@@ -1,0 +1,28 @@
+{
+  "root": "apps/skilltracker-e2e",
+  "sourceRoot": "apps/skilltracker-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/skilltracker-e2e/cypress.json",
+        "devServerTarget": "skilltracker:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "skilltracker:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/skilltracker-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["skilltracker"]
+}

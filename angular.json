@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "skilltracker": "apps/skilltracker",
+    "skilltracker-e2e": "apps/skilltracker-e2e"
+  }
+}
