@@ -54,7 +54,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         *ngSwitchCase="'number'"
         [formControl]="formControl"
         [formlyAttributes]="field"
-        [nzMax]="nzMax"
+        [nzMax]="nzMax ? nzMax :0"
         [nzMin]="nzMin"
         [nzPrecision]="to['number']?.precision"
         [nzPrecisionMode]="to['number']?.precisionMode"
@@ -148,9 +148,9 @@ export class FormlyFieldInput extends FieldType<FieldTypeConfig> {
     return '';
   }
   get nzMax(): number {
-    return this.to!['max'];
+    return this.to!['max'] as number;
   }
   get nzMin(): number {
-    return this.to!['min'];
+    return this.to!['min'] as number ;
   }
 }

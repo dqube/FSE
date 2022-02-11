@@ -1,4 +1,4 @@
-export * from './lib/form/form';
+export * from './lib/form/form.component';
 export * from './lib/form/form.module';
 export * from './lib/formly-ng-zorro.module';
 export {

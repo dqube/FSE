@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/component-selector */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,21 +7,21 @@ import {
   OnInit,
   Output
 } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
-  selector: 'ui-form',
+  selector: 'app-form',
   template: `
   
-    <form nz-form [nzLayout]="layout" [formGroup]="form" (ngSubmit)="submit()">
+    <form nz-form [nzLayout]="nzLayout" [formGroup]="form" (ngSubmit)="submit()">
       <formly-form
         [form]="form"
         [model]="model"
         [fields]="fields"
       ></formly-form>
       <button nz-button nzType="primary" type="submit">Submit</button>
-      <button nz-button nzType="danger" type="reset">Reset</button>
+      <button nz-button nzType="primary" type="reset">Reset</button>
     </form>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,9 +32,9 @@ export class FormlyFormComponent implements OnInit {
   constructor() {}
 
   @Input()
-  form!: FormGroup | FormArray;
+  form!: FormGroup;
 
-  @Input() model: any;
+  @Input() model: unknown;
 
   @Input()
   fieldGroup!: FormlyFieldConfig[];
@@ -45,11 +46,15 @@ export class FormlyFormComponent implements OnInit {
   layout!: string;
 
   @Output() fieldsChange = new EventEmitter<FormlyFieldConfig[]>();
-  @Output() modelChange: EventEmitter<any> = new EventEmitter();
-  @Output() formSubmit: EventEmitter<any> = new EventEmitter();
+  @Output() modelChange: EventEmitter<unknown> = new EventEmitter();
+  @Output() formSubmit: EventEmitter<unknown> = new EventEmitter();
   ngOnInit(): void {
     this.layout = this.options?.formState?.['layout'];
   }
+  get nzLayout() {
+    return this.options?.formState?.['layout'] || 'vertical';
+  }
+ 
   submit() {
   //  console.log(this.headers);
     //if (this.form.valid) {

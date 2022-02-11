@@ -23,7 +23,8 @@
       "@fse/profile/shell": ["libs/profile/feature/shell/src/index.ts"],
       "@fse/ui/form": ["libs/shared/ui/form/src/index.ts"],
       "@fse/ui/forms": ["libs/shared/ui/forms/src/index.ts"],
-      "@fse/ui/table": ["libs/shared/ui/table/src/index.ts"]
+      "@fse/ui/table": ["libs/shared/ui/table/src/index.ts"],
+      "@fse/util/core": ["libs/shared/utils/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

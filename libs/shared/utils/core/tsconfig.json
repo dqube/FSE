@@ -8,8 +8,11 @@
     },
     {
       "path": "./tsconfig.lib.prod.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
     }
-  ], 
+  ],
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
     "strict": true,

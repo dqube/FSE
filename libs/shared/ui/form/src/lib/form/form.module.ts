@@ -5,7 +5,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzGridModule } from 'ng-zorro-antd/grid';
-import { FormlyFormComponent } from './form';
+import { FormlyFormComponent } from './form.component';
 @NgModule({
   declarations: [FormlyFormComponent],
   imports: [
