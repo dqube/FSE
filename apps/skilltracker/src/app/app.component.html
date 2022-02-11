@@ -1,2 +1,37 @@
+<ul>
+  <li>
+    <a
+      routerLink="/profiles"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <i antIcon type="home" theme="outline"></i>
 
+      <span>Profiles</span>
+    </a>
+  </li>
+  <li>
+    <a
+      routerLink="/admin"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <i antIcon type="group" theme="outline"></i>
+
+      <span>Login</span>
+    </a>
+  </li>
+  <li>
+    <a
+      routerLink="profiles/create"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <i antIcon type="group" theme="outline"></i>
+
+      <span>Profile create</span>
+    </a>
+  </li>
+  
+</ul>
 <router-outlet></router-outlet>

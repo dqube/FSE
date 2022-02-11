@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/shared/ui/zorro",
+  "sourceRoot": "libs/shared/ui/zorro/src",
+  "prefix": "fse",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/shared/ui/zorro"],
+      "options": {
+        "project": "libs/shared/ui/zorro/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/shared/ui/zorro/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/shared/ui/zorro/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/shared/ui/zorro"],
+      "options": {
+        "jestConfig": "libs/shared/ui/zorro/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/ui/zorro/src/**/*.ts",
+          "libs/shared/ui/zorro/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["ui", "zorro"]
+}

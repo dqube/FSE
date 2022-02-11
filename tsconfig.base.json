@@ -24,7 +24,9 @@
       "@fse/ui/form": ["libs/shared/ui/form/src/index.ts"],
       "@fse/ui/forms": ["libs/shared/ui/forms/src/index.ts"],
       "@fse/ui/table": ["libs/shared/ui/table/src/index.ts"],
-      "@fse/util/core": ["libs/shared/utils/core/src/index.ts"]
+      "@fse/ui/zorro": ["libs/shared/ui/zorro/src/index.ts"],
+      "@fse/util/core": ["libs/shared/utils/core/src/index.ts"],
+      "@fse/web/shell": ["libs/shared/ui/shell/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

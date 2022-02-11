@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+/* eslint-disable @angular-eslint/component-selector */
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'profile-list',
