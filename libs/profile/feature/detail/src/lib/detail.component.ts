@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { lookup, LookupService } from '@fse/lookup';
 import { FormdataService } from '@fse/profile/data';
@@ -20,10 +20,12 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
   `,
   styles: [],
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent  {
   form = new FormGroup({});
   model: any = {};
-  constructor(private dataService: FormdataService, private lookup: LookupService) {}
+  constructor(private dataService: FormdataService, private lookup: LookupService) {
+    this.getFields();
+  }
   options: FormlyFormOptions = {
     formState: {
       labelWidth: '25px',
@@ -31,276 +33,12 @@ export class DetailComponent implements OnInit {
     },
   };
   fields: FormlyFieldConfig[] = []
-  // fields: FormlyFieldConfig[] = [
-  //   {
-  //     key: 'password',
-    
-  //     fieldGroup: [
-  //       {
-  //         key: 'password',
-  //         type: 'input',
-  //         templateOptions: {
-  //           type: 'password',
-  //           label: 'Password',
-  //           required: true,
-  //         },
-  //       },
-  //       {
-  //         key: 'passwordConfirm',
-  //         type: 'input',
-  //         templateOptions: {
-  //           type: 'password',
-  //           label: 'Confirm Password',
-  //           required: true,
-  //         },
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     type: 'date-picker',
-  //     templateOptions: {
-  //       type: 'range',
-  //       hideLabel: true,
-  //     }
-  //   },
-  //   {
-  //     type: 'transfer',
-  //     templateOptions: {
-  //       hideLabel: true,
-  //       nzDataSource: [
-  //         { key: '1', title: 'content1', disabled: false },
-  //         { key: '2', title: 'content2', disabled: true },
-  //         { key: '3', title: 'content3', disabled: false },
-  //         { key: '4', title: 'content4', disabled: true },
-  //         { key: '5', title: 'content5', disabled: false },
-  //       ],
-  //       nzTitles: ['Source', 'Target'],
   
-  //     }
-  //   },
-  //   {
-  //     type: 'time-picker',
-  //     defaultValue: new Date(),
-  //     templateOptions: {
-  //       hideLabel: true,
-  //       nzDefaultOpenValue: new Date(0, 0, 0, 0, 0, 0),
-  //     }
-  //   },
-  //   {
-  //     type: 'cascader',
-  //     defaultValue: ['zhejiang', 'hangzhou', 'xihu'],
-  //     wrappers: ['form-field-vertical'],
-  //     templateOptions: {
-  //       hideLabel: true,
-  //       nzOptions: [
-  //         {
-  //           value: 'zhejiang',
-  //           label: 'Zhejiang',
-  //           children: [
-  //             {
-  //               value: 'hangzhou',
-  //               label: 'Hangzhou',
-  //               children: [
-  //                 {
-  //                   value: 'xihu',
-  //                   label: 'West Lake',
-  //                   isLeaf: true
-  //                 }
-  //               ]
-  //             },
-  //             {
-  //               value: 'ningbo',
-  //               label: 'Ningbo',
-  //               isLeaf: true
-  //             }
-  //           ]
-  //         },
-  //         {
-  //           value: 'jiangsu',
-  //           label: 'Jiangsu',
-  //           children: [
-  //             {
-  //               value: 'nanjing',
-  //               label: 'Nanjing',
-  //               children: [
-  //                 {
-  //                   value: 'zhonghuamen',
-  //                   label: 'Zhong Hua Men',
-  //                   isLeaf: true
-  //                 }
-  //               ]
-  //             }
-  //           ]
-  //         }
-  //       ]
-  //     }
-  //   },
-  //   {
-  //     type: 'button',
-  //     wrappers: ['form-field-vertical'],
-  //     templateOptions: {
-  //       hideLabel: true,
-  //       options: [
-  //         {
-  //           label: 'aa',
-  //           nzType: 'primary',
-  //           nzLoading: true,
-  //         },
-  //         {
-  //           label: 'bb',
-  //           disabled: true,
-  //         }
-  //       ],
-  //     }
-  //   }, {
-  //     type: 'rate',
-  //     defaultValue: 2.5,
-  //     templateOptions: {
-  //       nzAllowHalf: true,
-    
-  //     },
-  //   }, {
-  //     type: 'alert',
-  //     templateOptions: {
-  //       nzType: 'success',
-  //     },
-    
-  //   }, {
-  //     type: 'empty',
-    
-  //   }, {
-  //     key: 'input',
-  //     type: 'input',
-  //     defaultValue: 'aaa',
-  //     wrappers: ['form-field-vertical'],
-  //     templateOptions: {
-  //       label: 'Input',
-  //       placeholder: 'please input.',
-  //       required: true,
-  //     },
-   
-  //     validators: {
-  //       required: {
-        
-  //         message: () => 'required',
-  //       },
-  //     },
-  //   },
-  //   {
-  //     key: 'checkbox',
-  //     type: 'checkbox',
-  //     wrappers: ['form-field-vertical'],
-  //     templateOptions: {
-  //       label: 'Checkbox',
-  //       hideLabel: false,
-  //       options: [
-  //         {
-  //           label: 'aa',
-  //           value: 'aa',
-  //         },
-  //         {
-  //           label: 'bb',
-  //           value: 'bb',
-  //           disabled: true,
-  //         }
-  //       ],
-  //     }
-  //   },
-  //   {
-  //     key: 'select',
-  //     type: 'select',
-  //     defaultValue: 'aa',
-  //     wrappers: ['form-field-vertical'],
-  //     templateOptions: {
-  //       label: 'Select',
-  //       options: [
-  //         {
-  //           label: 'aa',
-  //           value: 'aa',
-  //         },
-  //         {
-  //           label: 'bb',
-  //           value: 'bb',
-  //           disabled: true,
-  //         }
-  //       ],
-  //     }
-  //   },
-  //   {
-  //     key: 'radio',
-  //     type: 'radio',
-  //     wrappers: ['form-field-vertical'],
-  //     defaultValue: 'aa',
-  //     templateOptions: {
-  //       label: 'Radio',
-  //       options: [
-  //         {
-  //           label: 'aa',
-  //           value: 'aa',
-  //         },
-  //         {
-  //           label: 'bb',
-  //           value: 'bb',
-  //         }
-  //       ],
-  //     },
-  //   },
-  //   {
-  //     key: 'radio-button',
-  //     type: 'radio-button',
-  //     wrappers: ['form-field-vertical'],
-  //     defaultValue: 'aa',
-  //     templateOptions: {
-  //       label: 'Radio Button',
-  //       options: [
-  //         {
-  //           label: 'aa',
-  //           value: 'aa',
-  //         },
-  //         {
-  //           label: 'bb',
-  //           value: 'bb',
-  //         }
-  //       ],
-  //     },
-  //   },
-  //   {
-  //     key: 'switch',
-  //     type: 'switch',
-  //     wrappers: ['form-field-vertical'],
-  //     templateOptions: {
-  //       label: 'Switch',
-  //     }
-  //   },
-  //   {
-  //     key: 'slider',
-  //     type: 'slider',
-  //     wrappers: ['form-field-vertical'],
-  //     templateOptions: {
-  //       label: 'Slider',
-  //     }
-  //   },
-  // ];
   lookups: lookup[] = [];
-  // fields: FormlyFieldConfig[] = [
-  //   {
-  //     key: 'email',
-  //     type: 'input',
-  //     templateOptions: {
-  //       label: 'Email address',
-  //       placeholder: 'Enter email',
-  //       required: true,
-  //     }
-  //   }
-  // ];
-  ngOnInit(): void {
-    // this.dataService.getFieldsMultiple();
-    this.getFields();
-  }
-
+  
+ 
   getFields(): void {
     this.dataService.getUserData().subscribe(([model, fields]) => {
-      this.form = new FormGroup({});
       this.model = model;
       console.log(fields)
       this.fields = this.mapFields(fields);
