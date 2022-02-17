@@ -1,0 +1,430 @@
+[
+  {
+    "type": "grid",
+    "templateOptions": {
+      "span": 8
+    },
+    "fieldGroup": [
+      {
+        "key": "firstName",
+        "type": "input",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+        "templateOptions": {
+          "label": "Enter your first name",
+          "placeholder": "Enter your name",
+          "required": true,
+          "input": {
+            "addOnAfterIcon": "user",
+            "addOnBeforeIcon": "setting",
+            "prefixIcon": "user",
+            "suffixIcon": "lock"
+          }
+        }
+      },
+      {
+        "key": "lastName",
+        "type": "input",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+        "templateOptions": {
+          "label": "Enter your first name",
+          "placeholder": "Enter your name",
+          "required": true,
+          "input": {
+            "addOnAfterIcon": "user",
+            "addOnBeforeIcon": "setting",
+            "prefixIcon": "user",
+            "suffixIcon": "lock"
+          },
+          "expressionProperties": {
+            "templateOptions.disabled": "!model.firstName"
+          }
+        }
+      },
+      {
+        "key": "password",
+        "type": "input",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+        "templateOptions": {
+          "type": "password",
+          "label": "password",
+          "placeholder": "Enter your last name",
+          "required": true,
+          "input": {
+            "addOnAfterIcon": "user",
+            "addOnBeforeIcon": "setting",
+            "prefixIcon": "user",
+            "suffixIcon": "lock"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "grid",
+    "templateOptions": {
+      "span": 12
+    },
+    "fieldGroup": [
+      {
+        "key": "desc",
+        "type": "textarea",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-12",
+        "templateOptions": {
+          "label": "Long Description",
+          "required": true,
+          "textarea": {
+            "maxCharacterCount": 100
+          }
+        }
+      },
+      {
+        "key": "personage",
+        "type": "number",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-12",
+        "templateOptions": {
+          "label": "How old are you?",
+          "placeholder": "Enter your age",
+          "required": true,
+          "number": {
+            "step": 2,
+            "precision": 1,
+            "width": "100%",
+            "formatter": ""
+          }
+        }
+      }
+    ]
+  },
+  {
+    "key": "city",
+    "type": "autoComplete",
+    "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+    "templateOptions": {
+      "label": "City",
+      "placeholder": "Choose your city",
+      "required": true,
+      "autoComplete": {
+        "addOnAfterIcon": "user",
+        "addOnBeforeIcon": "setting",
+        "prefixIcon": "user",
+        "suffixIcon": "lock",
+        "backfill": true,
+        "defaultActiveFirstOption": true
+      },
+      "grid": {
+        "span": 8
+      }
+    }
+  },
+  {
+    "key": "cascader",
+    "type": "cascader",
+    "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+    "defaultValue": ["zhejiang", "hangzhou", "xihu"],
+    "templateOptions": {
+      "label": "cascader",
+      "required": true,
+      "cascader": {
+        "expandTrigger": "hover",
+        "expandIcon": "user"
+      },
+      "grid": {
+        "span": 8
+      }
+    }
+  },
+  {
+    "key": "checkbox",
+    "type": "checkbox",
+    "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+    "templateOptions": {
+      "label": "checkbox_group",
+      "type": "group",
+      "required": true,
+      "options": "",
+      "checkbox": {},
+      "grid": {
+        "span": 8
+      }
+    }
+  },
+  {
+    "key": "checkbox2",
+    "type": "checkbox",
+    "className": "ant-col  ant-col-8",
+    "defaultValue": true,
+    "templateOptions": {
+      "required": true,
+      "placeholder": "checkbox select",
+      "checkbox": {
+      }
+    }
+  },
+
+  {
+    "key": "rate",
+    "type": "rate",
+    "className": "ant-col  ant-col-8",
+    "templateOptions": {
+      "required": true,
+      "label": "rate",
+      "rate": {
+        "allowHalf": true
+      }
+    }
+  },
+
+  {
+    "key": "slider",
+    "type": "slider",
+    "className": "ant-col  ant-col-8",
+    "templateOptions": {
+      "placeholder": "123123123123",
+      "label": "slider",
+      "slider": {}
+    }
+  },
+  {
+    "key": "switch",
+    "type": "switch",
+    "className": "ant-col  ant-col-8",
+    "templateOptions": {
+      "placeholder": "123123123123",
+      "label": "switch",
+      "switch": {}
+    }
+  },
+
+  {
+    "key": "date",
+    "type": "date",
+    "className": "ant-col  ant-col-8",
+    "templateOptions": {
+      "placeholder": "123123123123",
+      "label": "date",
+      "date": {
+        "mode": "date",
+        "showTime": true
+      }
+    }
+  },
+  {
+    "key": "range-date",
+    "type": "date",
+    "className": "ant-col  ant-col-8",
+    "templateOptions": {
+      "type": "range",
+      "placeholder": ["123", "sdf"],
+      "label": "range-date",
+      "range": {
+        "mode": "date"
+      }
+    }
+  },
+  {
+    "key": "range-date2",
+    "type": "rangeDate",
+    "className": "ant-col  ant-col-8",
+    "templateOptions": {
+      "placeholder": ["123", "sdf"],
+      "label": "range-date2",
+      "range": {
+        "mode": "date"
+      }
+    }
+  },
+  {
+    "key": "time",
+    "type": "time",
+    "className": "ant-col  ant-col-8",
+    "templateOptions": {
+      "placeholder": ["123", "sdf"],
+      "label": "time",
+      "time": {}
+    }
+  },
+  {
+    "key": "radio",
+    "type": "radio",
+    "className": "ant-col  ant-col-8",
+    "defaultValue": "Apple",
+    "templateOptions": {
+      "required": true,
+      "label": "radio",
+      "type": "button",
+      "radio": {
+        "buttonStyle": "solid",
+        "name": "test"
+      },
+      "options": ""
+    }
+  },
+  {
+    "key": "fruit",
+    "type": "select",
+    "className": "ant-col  ant-col-8",
+    "templateOptions": {
+      "placeholder": "select any fruit",
+      "label": "select",
+      "multiple": true,
+      "lookup": { "id": 1, "desc": "sample", "categoryId": 1 },
+      "options": "",
+      "select": {
+        "showArrow": true,
+        "showSearch": true,
+        "allowClear": true,
+        "loading": false,
+        "maxMultipleCount": 2
+      }
+    }
+  },
+  {
+    "key": "tree-select",
+    "type": "tree-select",
+    "className": "ant-col  ant-col-8",
+    "templateOptions": {
+      "label": "tree-select",
+      "spanLabelFixed": 100,
+      "required": true,
+      "treeSelect": {}
+    }
+  },
+  {
+    "key": "upload",
+    "type": "upload",
+    "className": "ant-col  ant-col-8",
+    "defaultValue": [1, 2, 3, 4],
+    "templateOptions": {
+      "label": "upload",
+      "spanLabelFixed": 100,
+      "required": true,
+      "upload": {
+        "action": "https://localhost:44310/WeatherForecast1"
+      }
+    }
+  },
+  {
+    "className": "ant-col  ant-col-8",
+    "fieldGroupClassName": "ant-row",
+    "templateOptions": {
+      "card": {
+        "title": "Card form"
+      }
+    },
+    "wrappers": ["card"],
+    "fieldGroup": [
+      {
+        "className": "ant-col  ant-col-8",
+        "type": "input",
+        "key": "firstName",
+        "templateOptions": {
+          "label": "First Name"
+        }
+      },
+      {
+        "className": "ant-col  ant-col-8",
+        "type": "input",
+        "key": "lastName",
+        "templateOptions": {
+          "label": "Last Name"
+        }
+      }
+    ]
+  },
+  {
+    "type": "tabs",
+    "templateOptions": {
+      "tabs": {
+        "tabPosition": "top"
+      }
+    },
+    "fieldGroup": [
+      {
+        "templateOptions": {
+          "label": "Personal data",
+
+          "tab": {
+            "disabled": true
+          }
+        },
+        "fieldGroup": [
+          {
+            "key": "firstname",
+            "type": "input",
+            "templateOptions": {
+              "label": "First name",
+              "required": true
+            }
+          },
+          {
+            "key": "age",
+            "type": "input",
+            "templateOptions": {
+              "type": "number",
+              "label": "Age",
+              "required": true,
+              "number": {
+                "step": 2,
+                "precision": 1,
+                "width": "100%"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "templateOptions": { "label": "Destination" },
+        "fieldGroup": [
+          {
+            "key": "country",
+            "type": "input",
+            "templateOptions": {
+              "label": "Country",
+              "required": true
+            }
+          }
+        ]
+      },
+      {
+        "templateOptions": { "label": "Day of the trip" },
+        "fieldGroup": [
+          {
+            "key": "day",
+            "type": "date",
+            "templateOptions": {
+              "type": "date",
+              "label": "Day of the trip",
+              "required": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "wrappers": ["input-group"],
+    "className": "ant-col  ant-col-8",
+
+    "templateOptions": {
+      "label": "input-group",
+      "required": true
+    },
+    "fieldGroup": [
+      {
+        "type": "input",
+        "key": "inputtest1",
+        "templateOptions": {
+          "required": true
+        },
+        "expressionProperties": {}
+      },
+      {
+        "type": "input",
+        "key": "inputtest2",
+        "templateOptions": {
+          "required": true
+        }
+      }
+    ]
+  }
+]

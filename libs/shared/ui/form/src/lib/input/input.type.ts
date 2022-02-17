@@ -59,10 +59,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
         [nzPrecision]="to['number']?.precision"
         [nzPrecisionMode]="to['number']?.precisionMode"
         [nzStep]="to['number']?.step"
-        [nzInputMode]="to['number']?.inputMode"
-        (ngModelChange)="
-          to['number'].modelChange && to['number']?.modelChange($event)
-        "
+        [nzInputMode]="to['number']?.inputMode"       
         [ngStyle]="width!"
         [nzParser]="to['number']?.parser"      
          

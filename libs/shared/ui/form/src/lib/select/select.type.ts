@@ -31,9 +31,6 @@ import { NzSelectComponent } from 'ng-zorro-antd/select';
       [nzMaxTagPlaceholder]="to['select']?.maxTagPlaceholder"
       [nzOptionHeightPx]="to['select']?.optionHeightPx"
       [nzOptionOverflowSize]="to['select']?.optionOverflowSize"
-      (ngModelChange)="
-        to['select']?.ngModelChange && to['select']?.ngModelChange($event)
-      "
       (nzBlur)="to['select']?.blur && to['select']?.blur($event)"
       (nzFocus)="to['select']?.focus && to['select']?.focus($event)"
       (nzOpenChange)="to['select']?.openChange && to['select']?.openChange($event)"

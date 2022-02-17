@@ -23,22 +23,22 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
     >
       <nz-tab
         *ngFor="let tab of field.fieldGroup; let i = index; let last = last"
-        [nzTitle]="tab.templateOptions!['label'] || to['tabs']?.label"
-        [nzForceRender]="tab.templateOptions!['tab']['forceRender']"
-        [nzDisabled]="tab.templateOptions!['tab']['disabled']"
+        [nzTitle]="tab.templateOptions?.['label'] || to['tabs']?.label"
+        [nzDisabled]="tab.templateOptions?.['tab']?.['disabled']"
+        [nzForceRender]="tab.templateOptions?.['tab']?.['forceRender']"
         (nzClick)="
-          tab.templateOptions!['tab']['click'] && tab.templateOptions!['tab']['click()']
+          tab.templateOptions?.['tab']?.['click'] && tab.templateOptions?.['tab']?.['click()']
         "
         (nzDeselect)="
-          tab.templateOptions!['tab']['deselect'] &&
-            tab.templateOptions!['tab']['deselect()']
+          tab.templateOptions?.['tab']?.['deselect'] &&
+            tab.templateOptions?.['tab']?.['deselect()']
         "
         (nzSelect)="
-          tab.templateOptions!['tab'].select && tab.templateOptions!['tab'].select()
+          tab.templateOptions?.['tab']?.select && tab.templateOptions?.['tab']?.select()
         "
         (nzContextmenu)="
-          tab.templateOptions!['tab'].contextmenu &&
-            tab.templateOptions!['tab'].contextmenu($event)
+          tab.templateOptions?.['tab']?.contextmenu &&
+            tab.templateOptions?.['tab']?.contextmenu($event)
         "
       >
         <formly-field [field]="tab"></formly-field>

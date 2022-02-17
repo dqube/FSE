@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormlyFieldCheckbox } from './checkbox.type';
-import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
+import { FormlySelectModule } from '@ngx-formly/core/select';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { FormlyNzFormFieldModule } from '../form-field/form-field.module';
+import { FormlyFieldCheckbox } from './checkbox.type';
+
 
 @NgModule({
   declarations: [FormlyFieldCheckbox],
@@ -13,6 +14,7 @@ import { FormlyNzFormFieldModule } from '../form-field/form-field.module';
     CommonModule,
     NzCheckboxModule,
     ReactiveFormsModule,
+    FormlySelectModule,
     FormlyNzFormFieldModule,
 
     FormlyModule.forChild({

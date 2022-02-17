@@ -9,8 +9,5 @@ export interface RadioFormly {
    */
   buttonStyle?: 'outline' | 'solid';
 
-  /**
-   * 选中变化时回调
-   */
-  ngModelChange?: (value: any) => void;
+ 
 }

@@ -17,6 +17,7 @@
     "paths": {
       "@fse/admin/login": ["libs/admin/feature/login/src/index.ts"],
       "@fse/admin/shell": ["libs/admin/feature/shell/src/index.ts"],
+      "@fse/lookup": ["libs/shared/utils/lookup/src/index.ts"],
       "@fse/profile/data": ["libs/profile/data-access/src/index.ts"],
       "@fse/profile/detail": ["libs/profile/feature/detail/src/index.ts"],
       "@fse/profile/list": ["libs/profile/feature/list/src/index.ts"],

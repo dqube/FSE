@@ -22,9 +22,6 @@ import { NzSliderComponent } from 'ng-zorro-antd/slider';
       [nzVertical]="to['slider']?.vertical"
       [nzReverse]="to['slider']?.reverse"
       [nzTooltipVisible]="to['slider']?.tooltipVisible"
-      (ngModelChange)="
-        to['slider']?.ngModelChange && to['slider']?.ngModelChange($event)
-      "
       (nzOnAfterChange)="
         to['slider']?.onAfterChange && to['slider']?.onAfterChange($event)
       "

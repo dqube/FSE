@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
@@ -7,6 +7,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
+  
     <nz-radio-group [formControl]="formControl">
       <label
         nz-radio
@@ -25,6 +26,6 @@ export class FormlyFieldRadioComponent extends FieldType<FieldTypeConfig> {
   };
 
   get nzAutoFocus(): boolean {
-    return this.to!['nzAutoFocus'] || false;
+    return this.to?.['nzAutoFocus'] || false;
   }
 }

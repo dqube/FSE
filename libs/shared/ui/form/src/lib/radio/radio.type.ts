@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
@@ -9,9 +9,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [formlyAttributes]="field"
       [nzName]="to['radio']?.name"
       [nzButtonStyle]="to['radio']?.buttonStyle"
-      (ngModelChange)="
-        to['radio']?.ngModelChange && to['radio']?.ngModelChange($event)
-      "
+     
     >
       <ng-container *ngIf="to.type !== 'button'; else button">
         <label

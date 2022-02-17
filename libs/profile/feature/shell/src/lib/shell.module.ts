@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
  
@@ -12,6 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'create',
+    pathMatch:'full',
     loadChildren: () =>
       import('@fse/profile/detail').then(
         m => m.DetailModule

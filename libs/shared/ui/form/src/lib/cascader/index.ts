@@ -53,7 +53,6 @@ export interface CascaderFormly {
   labelRender?: TemplateRef<any>;
 
   /**
-   * 用于动态加载选项。如果提供了ngModel初始值，且未提供nzOptions值，则会立即触发动态加载。
    */
   loadData?: (option: any, index?: number) => PromiseLike<any>;
 

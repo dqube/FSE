@@ -21,9 +21,17 @@
             "input": "libs/shared/assets/src/assets",
             "glob": "**/*",
             "output": "/assets/"
+          },
+          {
+            "glob": "**/*",
+            "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+            "output": "/assets/"
           }
         ],
-        "styles": ["libs/shared/styles/src/scss/app.scss"],
+        "styles": [
+          "apps/skilltracker/src/styles.less",
+          "libs/shared/styles/src/scss/app.scss"
+        ],
         "scripts": []
       },
       "configurations": {

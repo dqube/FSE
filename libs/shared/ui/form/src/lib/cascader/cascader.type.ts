@@ -29,9 +29,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [nzExpandIcon]="to['cascader']?.expandIcon"
       [nzLoadData]="to['cascader']?.loadData"
       (nzClear)="to['cascader']?.clear && to['cascader']?.clear()"
-      (ngModelChange)="
-        to['cascader']?.modelChange && to['cascader'].modelChange($event)
-      "
+      
       (nzVisibleChange)="
         to['cascader']?.visibleChange && to['cascader'].visibleChange($event)
       "

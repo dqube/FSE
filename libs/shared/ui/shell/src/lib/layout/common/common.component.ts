@@ -3,20 +3,50 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'app-common',
   template: `
-     <nz-layout>
+    <nz-layout>
       <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
         <div class="logo"></div>
+
         <ul nz-menu nzTheme="dark" nzMode="inline">
           <li nz-submenu nzTitle="User" nzIcon="user">
             <ul>
-              <li nz-menu-item>Tom</li>
-              <li nz-menu-item>Bill</li>
-              <li nz-menu-item>Alex</li>
+              <li
+                nz-menu-item
+                routerLink=""
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+              >
+                Profiles
+              </li>
+              <li
+                nz-menu-item
+                routerLink="/admin"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+              >
+                Admin
+              </li>
+              <li
+                nz-menu-item
+                nz-menu-item
+                routerLink="create"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+              >
+                Create
+              </li>
             </ul>
           </li>
           <li nz-submenu nzTitle="Team" nzIcon="team">
             <ul>
-              <li nz-menu-item>Team 1</li>
+              <li
+                nz-menu-item
+                routerLink="create"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+              >
+                Profile create
+              </li>
               <li nz-menu-item>Team 2</li>
             </ul>
           </li>
@@ -40,14 +70,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
             <nz-breadcrumb-item>User</nz-breadcrumb-item>
             <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
           </nz-breadcrumb>
-          <div class="inner-content">Bill is a cat.</div>
+          <div class="inner-content">
+            Bill is a cat.
+            <router-outlet></router-outlet>
+          </div>
         </nz-content>
         <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
       </nz-layout>
     </nz-layout>
-    <router-outlet></router-outlet>
   `,
-   styles: [
+  styles: [
     `
       .trigger {
         font-size: 18px;
@@ -83,18 +115,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       .inner-content {
         padding: 24px;
         background: #fff;
-        min-height: 360px;
+        min-height: 460px;
       }
 
       nz-footer {
         text-align: center;
       }
-    `
+    `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommonComponent {
   isCollapsed = false;
-  
-
 }

@@ -159,7 +159,6 @@ export interface SelectFormly {
   /**
    * 选中变化时回调
    */
-  ngModelChange?: (value: any[]) => void;
 
   /**
    * 失去焦点时的回调

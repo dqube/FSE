@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/shared/utils/lookup",
+  "sourceRoot": "libs/shared/utils/lookup/src",
+  "prefix": "fse",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/shared/utils/lookup"],
+      "options": {
+        "project": "libs/shared/utils/lookup/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/shared/utils/lookup/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/shared/utils/lookup/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/shared/utils/lookup"],
+      "options": {
+        "jestConfig": "libs/shared/utils/lookup/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/utils/lookup/src/**/*.ts",
+          "libs/shared/utils/lookup/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["lookup"]
+}

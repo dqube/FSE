@@ -1,56 +1,55 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
-import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
-import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-import { NzSelectModule } from 'ng-zorro-antd/select';
-import { NzRadioModule } from 'ng-zorro-antd/radio';
-import { NzFormModule } from 'ng-zorro-antd/form';
-import { NzSwitchModule } from 'ng-zorro-antd/switch';
-import { NzSliderModule } from 'ng-zorro-antd/slider';
-import { NzEmptyModule } from 'ng-zorro-antd/empty';
-import { NzTabsModule } from 'ng-zorro-antd/tabs';
-import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
-import { NzRateModule } from 'ng-zorro-antd/rate';
-import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
 import { NzCalendarModule } from 'ng-zorro-antd/calendar';
 import { NzCascaderModule } from 'ng-zorro-antd/cascader';
-import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
-import { NzTransferModule } from 'ng-zorro-antd/transfer';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
-
-import { FormlyWrapperFormFieldComponent } from './wrappers/wrapper-form-field.component';
-import { FormlyWrapperFormFieldVerticalComponent } from './wrappers/wrapper-form-field-vertical.component';
-import { FormlyFieldCheckboxComponent } from './types/checkbox.component';
-import { FormlyFieldInputComponent } from './types/input.component';
-import { FormlyFieldSelectComponent } from './types/select.component';
-import { FormlyFieldTextareaComponent } from './types/textarea-component';
-import { FormlyFieldRadioComponent } from './types/radio.component';
-import { FormlyFieldRadioButtonComponent } from './types/radio-button.component';
-import { FormlyFieldSwitchComponent } from './types/switch.component';
-import { FormlyFieldSliderComponent } from './types/slider.component';
-import { FormlyFieldTabsComponent } from './types/tabs.component';
-import { FormlyFieldEmptyComponent } from './types/empty.component';
-import { FormlyFieldDividerComponent } from './types/divider.component';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzRateModule } from 'ng-zorro-antd/rate';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzSliderModule } from 'ng-zorro-antd/slider';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzTransferModule } from 'ng-zorro-antd/transfer';
+import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { FormlyFieldAlertComponent } from './types/alert.component';
-import { FormlyFieldRateComponent } from './types/rate.component';
-import { FormlyFieldUploadComponent } from './types/upload.component';
 import { FormlyFieldButtonComponent } from './types/button.component';
-import { FormlyFieldTreeSelectComponent } from './types/tree-select.component';
 import { FormlyFieldCascaderComponent } from './types/cascader.component';
+import { FormlyFieldCheckboxComponent } from './types/checkbox.component';
+import { FormlyFieldDatePickerComponent } from './types/date-picker.component';
+import { FormlyFieldDividerComponent } from './types/divider.component';
+import { FormlyFieldEmptyComponent } from './types/empty.component';
+import { FormlyFieldInputComponent } from './types/input.component';
+import { FormlyFieldRadioButtonComponent } from './types/radio-button.component';
+import { FormlyFieldRadioComponent } from './types/radio.component';
+import { FormlyFieldRateComponent } from './types/rate.component';
+import { FormlyFieldSelectComponent } from './types/select.component';
+import { FormlyFieldSliderComponent } from './types/slider.component';
+import { FormlyFieldSwitchComponent } from './types/switch.component';
+import { FormlyFieldTabsComponent } from './types/tabs.component';
+import { FormlyFieldTextareaComponent } from './types/textarea-component';
 import { FormlyFieldTimePickerComponent } from './types/time-picker.component';
 import { FormlyFieldTransferComponent } from './types/transfer.component';
-import { FormlyFieldDatePickerComponent } from './types/date-picker.component';
+import { FormlyFieldTreeSelectComponent } from './types/tree-select.component';
+import { FormlyFieldUploadComponent } from './types/upload.component';
+import { FormlyWrapperFormFieldVerticalComponent } from './wrappers/wrapper-form-field-vertical.component';
+import { FormlyWrapperFormFieldComponent } from './wrappers/wrapper-form-field.component';
+
+
 
 const FORMLY_FIELD_COMPONENTS = [
   FormlyFieldCheckboxComponent,
@@ -141,7 +140,6 @@ const NG_ZORRO_FORMLY_CONFIG = {
   imports: [
     CommonModule,
     FormsModule,
-    BrowserAnimationsModule,
     ReactiveFormsModule,
     FormlySelectModule,
     ...NG_ZORRO_MODULES,

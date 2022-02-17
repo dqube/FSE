@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "desc": "test1",
+    "categoryId": 1,
+    "value": "1",
+    "label": "Inpatient"
+  },
+  {
+    "id": 2,
+    "desc": "test2",
+    "categoryId": 1,
+    "value": "2",
+    "label": "Outpatient"
+  },
+  {
+    "id": 3,
+    "desc": "test2",
+    "categoryId": 2,
+    "value": "2",
+    "label": "BHInpatient"
+  },
+  {
+    "id": 4,
+    "desc": "test2",
+    "categoryId": 2,
+    "value": "2",
+    "label": "BHOutpatient"
+  }
+]

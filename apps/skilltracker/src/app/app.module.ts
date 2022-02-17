@@ -22,6 +22,7 @@ const routes: Routes = [
     BrowserModule,
    SharedUiShellModule,
     RouterModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

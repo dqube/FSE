@@ -26,5 +26,4 @@ export interface SwitchFormly {
   /**
    * 当前是否选中的回调
    */
-  ngModelChange?: (value: boolean) => void;
 }

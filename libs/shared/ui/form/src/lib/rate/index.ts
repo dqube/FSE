@@ -34,7 +34,6 @@ export interface RateFormly {
   /**
    * 选中变化时回调
    */
-  ngModelChange?: (value: number) => void;
 
   /**
    * 失去焦点时的回调

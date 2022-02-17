@@ -43,7 +43,6 @@ export interface TimeFormly {
   okText?: string;
 
   /**
-   * 当 [ngModel] 不存在时，可以设置面板打开时默认选中的值
    * @default new Date()
    */
   defaultOpenValue?: Date;
@@ -117,10 +116,7 @@ export interface TimeFormly {
    */
   suffixIcon?: string | TemplateRef<void>;
 
-  /**
-   * 时间发生变化的回调
-   */
-  ngModelChange?: (value: Date) => void;
+  
 
   /**
    * 面板打开/关闭时的回调

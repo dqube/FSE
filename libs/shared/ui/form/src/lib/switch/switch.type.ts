@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
 
 @Component({
@@ -11,9 +11,7 @@ import { FieldType, FieldTypeConfig } from '@ngx-formly/core';
       [nzUnCheckedChildren]="to['switch']?.unCheckedChildren"
       [nzLoading]="to['switch']?.loading"
       [nzControl]="to['switch']?.control"
-      (ngModelChange)="
-        to['switch']?.ngModelChange && to['switch'].ngModelChange($event)
-      "
+     
     ></nz-switch>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

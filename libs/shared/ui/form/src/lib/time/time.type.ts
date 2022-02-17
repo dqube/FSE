@@ -29,7 +29,6 @@ import { NzTimePickerComponent } from 'ng-zorro-antd/time-picker';
       [nzOpen]="(to['time']?.open)"
       [nzPopupClassName]="to['time']?.popupClassName"
       [nzUse12Hours]="to['time']?.use12Hours"
-      (ngModelChange)="to['time']?.ngModelChange && to['time']?.ngModelChange($event)"
       (nzOpenChange)="to['time']?.openChange && to['time']?.openChange($event)"
     ></nz-time-picker>
   `,
