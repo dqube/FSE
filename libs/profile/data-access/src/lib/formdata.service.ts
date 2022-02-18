@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LookupService } from '@fse/lookup';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { delay, forkJoin, mergeMap, Observable, of } from 'rxjs';
+import { forkJoin, mergeMap, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -167,11 +167,11 @@ getFieldsMultiple(){
     ]
   }
   getRadioOptions() {
-    return of([
+    return [
       { label: 'Apple', value: 'Apple', disabled: false },
       { label: 'Pear', value: 'Pear', disabled: false },
       { label: 'Orange', value: 'Orange' },
-    ]).pipe(delay(100))
+    ]
   }
   getFruits() {
     return [

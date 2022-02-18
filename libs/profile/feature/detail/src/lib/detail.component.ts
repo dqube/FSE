@@ -22,7 +22,7 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 })
 export class DetailComponent  {
   form = new FormGroup({});
-  model: any = {};
+  model: unknown = {};
   constructor(private dataService: FormdataService, private lookup: LookupService) {
     this.getFields();
   }
@@ -42,6 +42,7 @@ export class DetailComponent  {
       this.model = model;
       console.log(fields)
       this.fields = this.mapFields(fields);
+     //this.fields=fields;
     });
    
   }
