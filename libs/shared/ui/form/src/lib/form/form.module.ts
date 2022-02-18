@@ -13,7 +13,7 @@ import { FormlyFormComponent } from './form.component';
     ReactiveFormsModule,
     NzFormModule,
     NzGridModule,   
-    FormlyModule,
+    FormlyModule.forChild(),
     NzButtonModule,
   ],
   exports:[FormlyFormComponent]

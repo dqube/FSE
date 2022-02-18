@@ -1,9 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormlyModule } from '@ngx-formly/core';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { FormlyFieldCard } from './card.type';
-import { FormlyModule } from '@ngx-formly/core';
-import { FormlyFieldCascader } from '../cascader/cascader.type';
 
 @NgModule({
   declarations: [FormlyFieldCard],

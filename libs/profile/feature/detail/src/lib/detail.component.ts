@@ -1,30 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { lookup, LookupService } from '@fse/lookup';
+import { ActivatedRoute } from '@angular/router';
+import { lookup } from '@fse/lookup';
 import { FormdataService } from '@fse/profile/data';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
   selector: 'fse-detail',
   template: `
-  <div *ngIf="fields" > 
-  <!-- <formly-form
-  [model]="model"
-  [fields]="fields"
-  [options]="options"
-  [form]="form">
-</formly-form> -->
-<app-form  [form]="form" [model]="model" [options] = "options"
+
+ <app-form  [form]="form" [model]="model" [options] = "options"
     [fields]="fields" (formSubmit)="onSubmit($event)"></app-form>
-  </div>
+
   `,
   styles: [],
 })
-export class DetailComponent  {
+export class DetailComponent implements OnInit {
   form = new FormGroup({});
   model: unknown = {};
-  constructor(private dataService: FormdataService, private lookup: LookupService) {
-    this.getFields();
+  constructor(private dataService: FormdataService,private route: ActivatedRoute) {
+   // this.getFields();
   }
   options: FormlyFormOptions = {
     formState: {
@@ -32,20 +27,15 @@ export class DetailComponent  {
       layout: 'vertical',
     },
   };
-  fields: FormlyFieldConfig[] = []
+  fields: FormlyFieldConfig[] = [];
   
   lookups: lookup[] = [];
   
- 
-  getFields(): void {
-    this.dataService.getUserData().subscribe(([model, fields]) => {
-      this.model = model;
-      console.log(fields)
-      this.fields = this.mapFields(fields);
-     //this.fields=fields;
-    });
-   
+  ngOnInit() {
+    this.model = this.route.snapshot.data['fieldData'][0];
+    this.fields = this.mapFields(this.route.snapshot.data['fieldData'][1]);
   }
+ 
   /**
    * Adjust the JSON fields loaded from the server.
    */
@@ -53,6 +43,7 @@ export class DetailComponent  {
     return fields.map((f) => {
     
       if (f.fieldGroup) {
+        console.log(f)
         f.fieldGroup.forEach((f) => this.bindEvents(f));
       }
       this.bindEvents(f);
@@ -153,7 +144,8 @@ export class DetailComponent  {
     console.log(value);
   }
 
-  onSubmit(evt :any) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  onSubmit(evt :unknown) {
     console.log(JSON.stringify(this.model, null, 2));
   }
 }

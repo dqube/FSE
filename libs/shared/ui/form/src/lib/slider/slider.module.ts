@@ -1,12 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NzSliderModule } from 'ng-zorro-antd/slider';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
-import { FormlyNzFormFieldModule } from '../form-field/form-field.module';
-import { SelectFormly } from '../select';
-import { FormlyFieldSlider } from './slider.type';
+import { NzSliderModule } from 'ng-zorro-antd/slider';
 import { SliderFormly } from '.';
+import { FormlyNzFormFieldModule } from '../form-field/form-field.module';
+import { FormlyFieldSlider } from './slider.type';
 
 @NgModule({
   declarations: [FormlyFieldSlider],
