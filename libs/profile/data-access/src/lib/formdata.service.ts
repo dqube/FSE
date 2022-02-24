@@ -1,129 +1,148 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LookupService } from '@fse/lookup';
+import { lookup, LookupService } from '@fse/lookup';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { forkJoin, mergeMap, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FormdataService {
-  constructor(private http: HttpClient,private lookup: LookupService) {}
+  constructor(private http: HttpClient, private lookupService: LookupService) {}
 
   getUserData(): Observable<any> {
-    
     return forkJoin([this.getUser(), this.getFields()]);
   }
-getFieldsMultiple(){
-  this.http
+  getFieldsMultiple() {
+    this.http
       .get<FormlyFieldConfig[]>('assets/data/form.json')
-      .pipe(
-        mergeMap((fields) =>  this.lookup.bindLookup(fields)
-        )
-        
-      )
+      .pipe(mergeMap((fields) => this.lookupService.bindLookup(fields)))
       .subscribe((result) => console.log('merged: ', result));
-//   this.httpClient
-//   .get('https://jsonplaceholder.typicode.com/posts/1')
-//   .pipe(
-//     mergeMap((res: any) =>
-//       this.httpClient.get(
-//         'https://jsonplaceholder.typicode.com/users/' + res.userId
-//       )
-//     )
-//   )
-//   .subscribe((authorDetails: any) => {
-//     this.userDetails = authorDetails;
-//     console.log(authorDetails);
-//   });
-// this.httpClient
-//   .get('https://jsonplaceholder.typicode.com/posts/1')
-//   .pipe(
-//     switchMap((fields: any) =>
-//       this.httpClient
-//         .get('https://jsonplaceholder.typicode.com/users/' + fields.userId)
-//         .pipe(map((lookup) => ({ fields, lookup })))
-//     )
-//   )
-//   .subscribe((result) => console.log('merged: ', result));
-}
-  getUser()  {
-    return this.http.get<{ firstName: string, lastName: string }>('assets/data/user.json');
+   
+  }
+  getUser() {
+    return this.http.get<{ firstName: string; lastName: string }>(
+      'assets/data/user.json'
+    );
   }
 
-  getFields() {      
+  getFields() {
     return this.http.get<FormlyFieldConfig[]>('assets/data/form.json');
   }
-  bindEvents(fields:FormlyFieldConfig[]) {
+  getLookup() {
+    return this.http.get<lookup[]>('assets/data/lookup.json');
+  }
+  bindLookups(fields: FormlyFieldConfig[]): FormlyFieldConfig[] {
+    console.log('---- from bind lookups----');
+    const lookups: lookup[] = this._extractLookups(fields);
+    // ToDo: need to get the lookup json and fill it in formlyfield
+    // const serverLookups:lookup[] = this.getLookup().subscribe(); 
+    this._bindLookups(fields, lookups);
+    return fields;
+  }
+  private _bindLookups(
+    fields: FormlyFieldConfig[],
+    lookups: lookup[]
+  ): FormlyFieldConfig[] {
+    fields.forEach((f) => {
+      if (f.fieldGroup && f.fieldGroup.length > 0) {
+        this.bindLookups(f.fieldGroup);
+      }
+      if (f.templateOptions?.['lookup']) {
+        const templateOptions = f.templateOptions;
+        f.templateOptions.options = lookups.filter(
+          (lookup) => lookup.categoryId === templateOptions?.['lookup']?.['id']
+        );
+      }
+    });
+    return fields;
+  }
+  private _extractLookups(fields: FormlyFieldConfig[]): lookup[] {
+    const lookups: lookup[] = [];
+    fields.forEach((f) => {
+      if (f.fieldGroup && f.fieldGroup.length > 0) {
+        console.log(f.fieldGroup);
+        this._extractLookups(f.fieldGroup);
+      }
+      if (f.templateOptions) {
+        const templateOptions = f.templateOptions;
+        if (templateOptions?.['lookup']) {
+          lookups.push(templateOptions['lookup']);
+        }
+      }
+    });
+
+    return lookups;
+  }
+  bindEvents(fields: FormlyFieldConfig[]) {
     fields.map((f) => {
-      if (f.type=== 'number') {
-       // const numbr :NumberFormly=f.templateOptions?.['number'];
-      // const numbr =this.helpr.bindFields(f);
-      //  console.log(numbr);
-       // f.templateOptions['number'] =numbr;
-        
-       console.log();
+      if (f.type === 'number') {
+        // const numbr :NumberFormly=f.templateOptions?.['number'];
+        // const numbr =this.helpr.bindFields(f);
+        //  console.log(numbr);
+        // f.templateOptions['number'] =numbr;
+
+        console.log();
       }
       console.log(f);
       return f;
     });
-    
   }
   getCitities() {
     return [
       {
-        "value": 1,
-        "label": "chennai"
+        value: 1,
+        label: 'chennai',
       },
       {
-        "value": 2,
-        "label": "madurai"
-      }
-    ]
+        value: 2,
+        label: 'madurai',
+      },
+    ];
   }
   getoptions() {
     return [
-    {
-      "value": "zhejiang",
-      "label": "Zhejiang",
-      "children": [
-        {
-          "value": "hangzhou",
-          "label": "Hangzhou",
-          "children": [
-            {
-              "value": "xihu",
-              "label": "West Lake",
-              "isLeaf": true
-            }
-          ]
-        },
-        {
-          "value": "ningbo",
-          "label": "Ningbo",
-          "isLeaf": true
-        }
-      ]
-    },
-    {
-      "value": "jiangsu",
-      "label": "Jiangsu",
-      "children": [
-        {
-          "value": "nanjing",
-          "label": "Nanjing",
-          "children": [
-            {
-              "value": "zhonghuamen",
-              "label": "Zhong Hua Men",
-              "isLeaf": true
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+      {
+        value: 'zhejiang',
+        label: 'Zhejiang',
+        children: [
+          {
+            value: 'hangzhou',
+            label: 'Hangzhou',
+            children: [
+              {
+                value: 'xihu',
+                label: 'West Lake',
+                isLeaf: true,
+              },
+            ],
+          },
+          {
+            value: 'ningbo',
+            label: 'Ningbo',
+            isLeaf: true,
+          },
+        ],
+      },
+      {
+        value: 'jiangsu',
+        label: 'Jiangsu',
+        children: [
+          {
+            value: 'nanjing',
+            label: 'Nanjing',
+            children: [
+              {
+                value: 'zhonghuamen',
+                label: 'Zhong Hua Men',
+                isLeaf: true,
+              },
+            ],
+          },
+        ],
+      },
+    ];
+  }
   getNodes() {
     return [
       {
@@ -145,56 +164,56 @@ getFieldsMultiple(){
           },
         ],
       },
-    ]; 
+    ];
   }
   getCheckboxOptions() {
     return [
       {
-        "label": "Apple",
-        "value": "Apple",
-        "disabled": true,
-        "checked": true
+        label: 'Apple',
+        value: 'Apple',
+        disabled: true,
+        checked: true,
       },
       {
-        "label": "Pear",
-        "value": "Pear",
-        "disabled": true
+        label: 'Pear',
+        value: 'Pear',
+        disabled: true,
       },
       {
-        "label": "Orange",
-        "value": "Orange"
-      }
-    ]
+        label: 'Orange',
+        value: 'Orange',
+      },
+    ];
   }
   getRadioOptions() {
     return [
       { label: 'Apple', value: 'Apple', disabled: false },
       { label: 'Pear', value: 'Pear', disabled: false },
       { label: 'Orange', value: 'Orange' },
-    ]
+    ];
   }
   getFruits() {
     return [
       {
-        "label": "Apple",
-        "value": "Apple",
-        "disabled": true
+        label: 'Apple',
+        value: 'Apple',
+        disabled: true,
       },
       {
-        "label": "Apple2",
-        "value": "Apple2",
-        "disabled": true,
-        "hide": true
+        label: 'Apple2',
+        value: 'Apple2',
+        disabled: true,
+        hide: true,
       },
       {
-        "label": "Pear",
-        "value": "Pear",
-        "disabled": false
+        label: 'Pear',
+        value: 'Pear',
+        disabled: false,
       },
       {
-        "label": "Orange",
-        "value": "Orange"
-      }
-    ]
+        label: 'Orange',
+        value: 'Orange',
+      },
+    ];
   }
 }

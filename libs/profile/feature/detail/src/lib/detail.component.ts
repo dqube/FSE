@@ -32,8 +32,8 @@ export class DetailComponent implements OnInit {
   lookups: lookup[] = [];
   
   ngOnInit() {
-    this.model = this.route.snapshot.data['fieldData'][0];
-    this.fields = this.mapFields(this.route.snapshot.data['fieldData'][1]);
+    this.model = this.route.snapshot.data['fieldData'][1];
+    this.fields = this.mapFields(this.route.snapshot.data['fieldData'][0]);
   }
  
   /**
