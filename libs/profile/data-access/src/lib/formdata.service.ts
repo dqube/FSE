@@ -35,6 +35,8 @@ export class FormdataService {
   bindLookups(fields: FormlyFieldConfig[]): FormlyFieldConfig[] {
     console.log('---- from bind lookups----');
     const lookups: lookup[] = this._extractLookups(fields);
+    console.log(lookups);
+    console.log('---- from bind lookups ends----');
     // ToDo: need to get the lookup json and fill it in formlyfield
     // const serverLookups:lookup[] = this.getLookup().subscribe(); 
     this._bindLookups(fields, lookups);
