@@ -37,8 +37,6 @@ export class FormdataService {
   public bindLookups(fields: FormlyFieldConfig[]) {
     const lookups: lookup[] = [];
     this.extractLookups(fields, lookups);
-    console.log('lookups');
-console.log(lookups);
     return this.getAllLookups().pipe(
       map(allLookups =>
         allLookups.filter(m =>
@@ -59,8 +57,6 @@ console.log(lookups);
       }
       if (f.templateOptions?.['lookup']) {
         const templateOptions = f.templateOptions;
-        console.log('lookup mapping');
-        console.log(templateOptions?.['lookup']?.['categoryId'])
         f.templateOptions.options = lookups.filter(
           
           (lookup) => lookup.categoryId === templateOptions?.['lookup']?.['categoryId']
@@ -72,7 +68,6 @@ console.log(lookups);
   public extractLookups(fields: FormlyFieldConfig[], lookups: lookup[]) {
     fields.forEach((f) => {
       if (f.fieldGroup && f.fieldGroup.length > 0) {
-        console.log(f.fieldGroup);
         this.extractLookups(f.fieldGroup, lookups);
       }
       if (f.templateOptions) {
@@ -89,7 +84,6 @@ console.log(lookups);
       if (f.type === 'number') {
         // const numbr :NumberFormly=f.templateOptions?.['number'];
         // const numbr =this.helpr.bindFields(f);
-        //  console.log(numbr);
         // f.templateOptions['number'] =numbr;
 
         console.log();
@@ -98,18 +92,7 @@ console.log(lookups);
       return f;
     });
   }
-  getCitities() {
-    return [
-      {
-        value: 1,
-        label: 'chennai',
-      },
-      {
-        value: 2,
-        label: 'madurai',
-      },
-    ];
-  }
+ 
   getoptions() {
     return [
       {
@@ -201,29 +184,5 @@ console.log(lookups);
       { label: 'Pear', value: 'Pear', disabled: false },
       { label: 'Orange', value: 'Orange' },
     ];
-  }
-  getFruits() {
-    return [
-      {
-        label: 'Apple',
-        value: 'Apple',
-        disabled: true,
-      },
-      {
-        label: 'Apple2',
-        value: 'Apple2',
-        disabled: true,
-        hide: true,
-      },
-      {
-        label: 'Pear',
-        value: 'Pear',
-        disabled: false,
-      },
-      {
-        label: 'Orange',
-        value: 'Orange',
-      },
-    ];
-  }
+  } 
 }

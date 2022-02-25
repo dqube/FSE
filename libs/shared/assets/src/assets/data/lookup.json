@@ -40,5 +40,37 @@
     "categoryId": 3,
     "value": "2",
     "label": "Trichy"
+  },
+  {
+    "id": 1,
+    "desc": "test1",
+    "categoryId": 1,
+    "label": "Apple",
+    "value": "Apple",
+    "disabled": true
+  },
+  {
+    "id": 1,
+    "desc": "test1",
+    "categoryId": 1,
+    "label": "Apple2",
+    "value": "Apple2",
+    "disabled": true,
+    "hide": true
+  },
+  {
+    "id": 1,
+    "desc": "test1",
+    "categoryId": 1,
+    "label": "Pear",
+    "value": "Pear",
+    "disabled": false
+  },
+  {
+    "id": 1,
+    "desc": "test1",
+    "categoryId": 1,
+    "label": "Orange",
+    "value": "Orange"
   }
 ]
