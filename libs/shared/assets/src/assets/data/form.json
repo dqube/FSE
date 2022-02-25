@@ -133,6 +133,7 @@
           "label": "City",
           "placeholder": "Choose your city",
           "required": true,
+          "lookup": { "id": 1, "desc": "sample", "categoryId": 3 },
           "autoComplete": {
             "addOnAfterIcon": "user",
             "addOnBeforeIcon": "setting",

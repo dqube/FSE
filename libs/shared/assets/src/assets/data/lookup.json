@@ -24,7 +24,21 @@
     "id": 4,
     "desc": "test2",
     "categoryId": 2,
-    "value": "2",
+    "value": "3",
     "label": "BHOutpatient"
+  },
+  {
+    "id": 5,
+    "desc": "test2",
+    "categoryId": 3,
+    "value": "1",
+    "label": "Madurai"
+  },
+  {
+    "id": 6,
+    "desc": "test2",
+    "categoryId": 3,
+    "value": "2",
+    "label": "Trichy"
   }
 ]

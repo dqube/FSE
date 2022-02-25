@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lookup, LookupService } from '@fse/lookup';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { forkJoin, mergeMap, Observable } from 'rxjs';
+import { forkJoin, map, mergeMap, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormdataService {
-  constructor(private http: HttpClient, private lookupService: LookupService) {}
+  constructor(private http: HttpClient, private lookupService: LookupService) { }
 
   getUserData(): Observable<any> {
     return forkJoin([this.getUser(), this.getFields()]);
@@ -18,7 +18,7 @@ export class FormdataService {
       .get<FormlyFieldConfig[]>('assets/data/form.json')
       .pipe(mergeMap((fields) => this.lookupService.bindLookup(fields)))
       .subscribe((result) => console.log('merged: ', result));
-   
+
   }
   getUser() {
     return this.http.get<{ firstName: string; lastName: string }>(
@@ -29,42 +29,51 @@ export class FormdataService {
   getFields() {
     return this.http.get<FormlyFieldConfig[]>('assets/data/form.json');
   }
-  getLookup() {
+
+  getAllLookups() {
     return this.http.get<lookup[]>('assets/data/lookup.json');
   }
-  bindLookups(fields: FormlyFieldConfig[]): FormlyFieldConfig[] {
-    console.log('---- from bind lookups----');
-    const lookups: lookup[] = this._extractLookups(fields);
-    console.log(lookups);
-    console.log('---- from bind lookups ends----');
-    // ToDo: need to get the lookup json and fill it in formlyfield
-    // const serverLookups:lookup[] = this.getLookup().subscribe(); 
-    this._bindLookups(fields, lookups);
-    return fields;
+
+  public bindLookups(fields: FormlyFieldConfig[]) {
+    const lookups: lookup[] = [];
+    this.extractLookups(fields, lookups);
+    console.log('lookups');
+console.log(lookups);
+    return this.getAllLookups().pipe(
+      map(allLookups =>
+        allLookups.filter(m =>
+          lookups.some(n => n.categoryId == m.categoryId))),
+      map(filteredLookups => {
+        this._bindLookups(fields, filteredLookups);
+        return fields;
+      }));
   }
-  private _bindLookups(
+
+  _bindLookups(
     fields: FormlyFieldConfig[],
     lookups: lookup[]
-  ): FormlyFieldConfig[] {
+  ) {
     fields.forEach((f) => {
       if (f.fieldGroup && f.fieldGroup.length > 0) {
-        this.bindLookups(f.fieldGroup);
+        this._bindLookups(f.fieldGroup, lookups);
       }
       if (f.templateOptions?.['lookup']) {
         const templateOptions = f.templateOptions;
+        console.log('lookup mapping');
+        console.log(templateOptions?.['lookup']?.['categoryId'])
         f.templateOptions.options = lookups.filter(
-          (lookup) => lookup.categoryId === templateOptions?.['lookup']?.['id']
+          
+          (lookup) => lookup.categoryId === templateOptions?.['lookup']?.['categoryId']
         );
       }
     });
-    return fields;
   }
-  private _extractLookups(fields: FormlyFieldConfig[]): lookup[] {
-    const lookups: lookup[] = [];
+
+  public extractLookups(fields: FormlyFieldConfig[], lookups: lookup[]) {
     fields.forEach((f) => {
       if (f.fieldGroup && f.fieldGroup.length > 0) {
         console.log(f.fieldGroup);
-        this._extractLookups(f.fieldGroup);
+        this.extractLookups(f.fieldGroup, lookups);
       }
       if (f.templateOptions) {
         const templateOptions = f.templateOptions;
@@ -73,9 +82,8 @@ export class FormdataService {
         }
       }
     });
-
-    return lookups;
   }
+
   bindEvents(fields: FormlyFieldConfig[]) {
     fields.map((f) => {
       if (f.type === 'number') {

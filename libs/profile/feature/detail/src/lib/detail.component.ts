@@ -73,8 +73,9 @@ export class DetailComponent implements OnInit {
       f.type === 'autoComplete' &&
       f.templateOptions?.['autoComplete']
     ) {
-      f.templateOptions['autoComplete']['dataSource'] =
-        this.dataService.getCitities();
+
+      f.templateOptions['autoComplete']['dataSource'] =f.templateOptions?.['options']
+      //  this.dataService.getCitities();
     }
     if (f.key === 'cascader' && f.type === 'cascader' && f.templateOptions) {
       f.templateOptions['options'] = this.dataService.getoptions();
@@ -92,7 +93,7 @@ export class DetailComponent implements OnInit {
       f.templateOptions['options'] = this.dataService.getCheckboxOptions();
     }
     if (f.key === 'fruit' && f.type === 'select' && f.templateOptions) {
-      f.templateOptions['options'] = this.dataService.getFruits();
+      //f.templateOptions['options'] = this.dataService.getFruits();
     }
     if (
       f.key === 'transfer' &&
