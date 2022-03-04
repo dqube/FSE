@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  profileapi:"https://profileapi20220304100041.azurewebsites.net/api/Profile",
+  adminapi:"https://adminapi20220304095234.azurewebsites.net/api/Admin"  
 };
 
 /*

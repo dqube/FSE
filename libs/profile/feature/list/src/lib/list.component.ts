@@ -5,6 +5,9 @@ import { NuColumn, NuData } from '@fse/ui/table';
 @Component({
   selector: 'profile-list',
   template: `
+  <nz-page-header nzTitle="Profiles"><nz-page-header-extra>        
+        <button nz-button nzType="primary">Add New Profile</button>
+      </nz-page-header-extra></nz-page-header>
    <nu-table [columns]="columns" [data]="data"></nu-table>
   `,
   styles: [
@@ -16,7 +19,6 @@ export class ListComponent {
       name: 'c1',
       key: 'id',
       sortable: true,
-      style: { color: 'red' },
       width: '50px'
     },
     {

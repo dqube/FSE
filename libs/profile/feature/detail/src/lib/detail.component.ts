@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { lookup } from '@fse/lookup';
-import { FormdataService } from '@fse/profile/data';
+import { DataService } from '@fse/profile/data';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
   selector: 'fse-detail',
   template: `
-
+<nz-page-header nzTitle="Profile"><nz-page-header-extra>        
+        <button nz-button nzType="primary">Add New Profile</button>
+      </nz-page-header-extra></nz-page-header>
  <app-form  [form]="form" [model]="model" [options] = "options"
     [fields]="fields" (formSubmit)="onSubmit($event)"></app-form>
 
@@ -18,7 +20,7 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 export class DetailComponent implements OnInit {
   form = new FormGroup({});
   model: unknown = {};
-  constructor(private dataService: FormdataService,private route: ActivatedRoute) {
+  constructor(private dataService: DataService,private route: ActivatedRoute) {
    // this.getFields();
   }
   options: FormlyFormOptions = {

@@ -4,11 +4,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-common',
   template: `
     <nz-layout>
-      <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
-        <div class="logo"></div>
+      <nz-sider
+        nzCollapsible
+        [(nzCollapsed)]="isCollapsed"
+        [nzTrigger]="null"
+        nzTheme="light"
+      >
+        <div class="logo">
+        <img src="./assets/images/logo/logo-fold.png">
+        <span>FSE</span>
+        </div>
 
-        <ul nz-menu nzTheme="dark" nzMode="inline">
-          <li nz-submenu nzTitle="User" nzIcon="user">
+        <ul nz-menu nzTheme="light" nzMode="inline">
+          <li nz-submenu nzTitle="Profilie" nzIcon="user">
             <ul>
               <li
                 nz-menu-item
@@ -37,7 +45,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
               </li>
             </ul>
           </li>
-          <li nz-submenu nzTitle="Team" nzIcon="team">
+          <li nz-submenu nzTitle="Admin" nzIcon="Admin">
             <ul>
               <li
                 nz-menu-item
@@ -45,14 +53,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
               >
-                Profile create
+                Search
               </li>
-              <li nz-menu-item>Team 2</li>
             </ul>
-          </li>
-          <li nz-menu-item>
-            <i nz-icon nzType="file"></i>
-            <span>File</span>
           </li>
         </ul>
       </nz-sider>
@@ -66,16 +69,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
           ></i>
         </nz-header>
         <nz-content>
-          <nz-breadcrumb>
-            <nz-breadcrumb-item>User</nz-breadcrumb-item>
-            <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
-          </nz-breadcrumb>
           <div class="inner-content">
-            Bill is a cat.
             <router-outlet></router-outlet>
           </div>
         </nz-content>
-        <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer>
+        <nz-footer>FSE Assesment 2022 @469001</nz-footer>
       </nz-layout>
     </nz-layout>
   `,
@@ -97,6 +95,50 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         height: 32px;
         background: rgba(255, 255, 255, 0.2);
         margin: 16px;
+      }
+      div.header-wrapper {
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        line-height: 0;
+
+        img {
+          margin-left: 8px;
+          width: 40px;
+          height: 40px;
+        }
+
+        .username-text {
+          margin-left: 8px;
+          flex: 1;
+          line-height: 40px;
+          font-size: 14px;
+          color: white;
+        }
+
+        .header-btn {
+          color: white;
+
+          i {
+            font-size: 18px;
+          }
+        }
+      }
+
+      .list-wrapper {
+        overflow-y: scroll;
+        position: absolute;
+        top: 60px;
+        bottom: 48px;
+        width: 100%;
+        padding-bottom: 20px;
+
+        .add-list-btn-wrapper {
+          margin-top: 8px;
+          text-align: center;
+        }
       }
 
       nz-header {

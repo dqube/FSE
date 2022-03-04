@@ -21,6 +21,7 @@
       "@fse/profile/data": ["libs/profile/data-access/src/index.ts"],
       "@fse/profile/detail": ["libs/profile/feature/detail/src/index.ts"],
       "@fse/profile/list": ["libs/profile/feature/list/src/index.ts"],
+      "@fse/profile/model": ["libs/profile/model/src/index.ts"],
       "@fse/profile/shell": ["libs/profile/feature/shell/src/index.ts"],
       "@fse/ui/form": ["libs/shared/ui/form/src/index.ts"],
       "@fse/ui/forms": ["libs/shared/ui/forms/src/index.ts"],

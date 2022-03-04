@@ -7,6 +7,7 @@
     "profile-feature-detail": "libs/profile/feature/detail",
     "profile-feature-list": "libs/profile/feature/list",
     "profile-feature-shell": "libs/profile/feature/shell",
+    "profile-model": "libs/profile/model",
     "shared-assets": "libs/shared/assets",
     "shared-styles": "libs/shared/styles",
     "shared-ui-form": "libs/shared/ui/form",

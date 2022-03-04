@@ -2,24 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lookup, LookupService } from '@fse/lookup';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { forkJoin, map, mergeMap, Observable } from 'rxjs';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class FormdataService {
+export class DataService {
   constructor(private http: HttpClient, private lookupService: LookupService) { }
 
-  getUserData(): Observable<any> {
-    return forkJoin([this.getUser(), this.getFields()]);
-  }
-  getFieldsMultiple() {
-    this.http
-      .get<FormlyFieldConfig[]>('assets/data/form.json')
-      .pipe(mergeMap((fields) => this.lookupService.bindLookup(fields)))
-      .subscribe((result) => console.log('merged: ', result));
-
-  }
+ 
   getUser() {
     return this.http.get<{ firstName: string; lastName: string }>(
       'assets/data/user.json'
