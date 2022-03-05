@@ -40,11 +40,15 @@ export class DataService {
   }): Observable<Profile[]> {
     return this.http.post<Profile[]>(this.adminapi + '/search/', data);
   }
+
+  getAll(): Observable<Profile[]> {
+    return this.http.get<Profile[]>(this.adminapi + '/getall');
+  }
   getProfile(id: string): Observable<Profile> {
     return this.http.get<Profile>(this.profileapi + '/' + id);
   }
-  create(profile: Profile): Observable<string> {
-    return this.http.post<string>(this.profileapi + '/', profile);
+  create(profile: Profile){
+    return this.http.post(this.profileapi + '/', profile);
   }
   update(profile: Profile): Observable<Profile> {
     return this.http.put<Profile>(this.profileapi + '/', profile);
@@ -64,7 +68,7 @@ export class DataService {
       })
     );
   }
-
+  
   _bindLookups(fields: FormlyFieldConfig[], lookups: lookup[]) {
     fields.forEach((f) => {
       if (f.fieldGroup && f.fieldGroup.length > 0) {

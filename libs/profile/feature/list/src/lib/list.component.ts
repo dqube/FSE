@@ -7,12 +7,29 @@ import { NuColumn, NuData } from '@fse/ui/table';
 @Component({
   selector: 'profile-list',
   template: `
-    <nz-page-header nzTitle="Profiles"
+    <nz-page-header nzTitle="Profiles" *ngIf="profiles"
       ><nz-page-header-extra>
         <button nz-button nzType="primary">Add New Profile</button>
       </nz-page-header-extra></nz-page-header
     >
-    <nu-table [columns]="columns" [data]="data"></nu-table>
+    <nz-table nzShowSizeChanger [nzData]="profiles" >
+      <thead>
+        <tr>
+          <th nzColumnKey="empId">Associate ID</th>
+          <th nzColumnKey="name">Gender</th>
+          <th nzColumnKey="email">Email</th>
+          <th nzColumnKey="mobile">Mobile</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of profiles">
+          <td>{{ data.empId }}</td>
+          <td>{{ data.name }}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.mobile }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
   `,
   styles: [],
 })
@@ -31,16 +48,22 @@ export class ListComponent {
     skills: [],
   };
   constructor(private dataService: DataService) {
-    dataService.getProfile('CTS469001').subscribe((data) => {
-      console.log(data);
-      this.profile = data;
-    });
-    const data = { EmpId: 'CTS469001', Name: '', skill: '' };
-    dataService.search(data).subscribe((data) => {
-      console.log('from search');
-      console.log(data)
+    // dataService.getProfile('CTS7001').subscribe((data) => {
+    //   console.log(data);
+    //   this.profile = data;
+    // });
+    // const data = { EmpId: 'CTS7001', Name: '', skill: '' };
+    // dataService.search(data).subscribe((data) => {
+    //   console.log('from search');
+    //   console.log(data)
+    //   this.profiles = data;
+    //   this.data=data;
+    // });
+    dataService.getAll().subscribe((data) => {
+      console.log(JSON.stringify(data));
       this.profiles = data;
-      this.data=data;
+      console.log(' after mapping');
+      console.log(this.profiles);
     });
   }
   columns: NuColumn[] = [
@@ -55,15 +78,6 @@ export class ListComponent {
       key: 'name',
     },
   ];
-  
-  // data: NuData[] = [
-  //   {
-  //     EmpId: 1,
-  //     Name: 'Xiao Ming',
-  //   },
-  //   {
-  //     EmpId: 2,
-  //     Name: 'Xiao Wang',
-  //   },
-  // ];
+
+
 }

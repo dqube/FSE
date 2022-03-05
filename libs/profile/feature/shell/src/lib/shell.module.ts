@@ -14,8 +14,16 @@ const routes: Routes = [
     path: 'create',
     pathMatch:'full',
     loadChildren: async () =>
-    (await import('@fse/profile/detail').then(
-        m => m.DetailModule
+    (await import('@fse/profile/create').then(
+        m => m.ProfileFeatureCreateModule
+      ))
+  },
+  {
+    path: 'edit',
+    pathMatch:'full',
+    loadChildren: async () =>
+    (await import('@fse/profile/edit').then(
+        m => m.ProfileFeatureEditModule
       ))
   }
   // { path: '', redirectTo: 'profiles', pathMatch: 'full' },

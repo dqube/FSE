@@ -1,0 +1,42 @@
+{
+  "projectType": "library",
+  "root": "libs/profile/feature/edit",
+  "sourceRoot": "libs/profile/feature/edit/src",
+  "prefix": "fse",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/profile/feature/edit"],
+      "options": {
+        "project": "libs/profile/feature/edit/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/profile/feature/edit/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/profile/feature/edit/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/profile/feature/edit"],
+      "options": {
+        "jestConfig": "libs/profile/feature/edit/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/profile/feature/edit/src/**/*.ts",
+          "libs/profile/feature/edit/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
