@@ -1,5 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector */
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { DataService } from '@fse/profile/data';
 import { Profile } from '@fse/profile/model';
 import { NuColumn, NuData } from '@fse/ui/table';
@@ -33,7 +33,7 @@ import { NuColumn, NuData } from '@fse/ui/table';
   `,
   styles: [],
 })
-export class ListComponent {
+export class ListComponent implements OnChanges{
   /**
    *
    */
@@ -60,12 +60,13 @@ export class ListComponent {
     //   this.data=data;
     // });
     dataService.getAll().subscribe((data) => {
-      console.log(JSON.stringify(data));
       
       this.profiles = data;
-      console.log(' after mapping');
       console.log(this.profiles);
     });
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('from on changes');
   }
   columns: NuColumn[] = [
     {
