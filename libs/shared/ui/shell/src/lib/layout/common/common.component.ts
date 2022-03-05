@@ -45,7 +45,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
               </li>
             </ul>
           </li>
-          <li nz-submenu nzTitle="Admin" nzIcon="Admin">
+          <li nz-submenu nzTitle="Admin">
             <ul>
               <li
                 nz-menu-item

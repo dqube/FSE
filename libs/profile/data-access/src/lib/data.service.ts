@@ -1,16 +1,25 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lookup, LookupService } from '@fse/lookup';
+import { Profile, ProfileVM } from '@fse/profile/model';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  constructor(private http: HttpClient, private lookupService: LookupService) { }
+  profileapi = 'https://profileapi20220304100041.azurewebsites.net/api/Profile';
+  adminapi = 'https://adminapi20220304095234.azurewebsites.net/api/Admin';
 
- 
+  httpHeader = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+
+  constructor(private http: HttpClient, private lookupService: LookupService) {}
+
   getUser() {
     return this.http.get<{ firstName: string; lastName: string }>(
       'assets/data/user.json'
@@ -24,24 +33,39 @@ export class DataService {
   getAllLookups() {
     return this.http.get<lookup[]>('assets/data/lookup.json');
   }
-
+  search(data: {
+    EmpId: string;
+    Name: string;
+    skill: string;
+  }): Observable<Profile[]> {
+    return this.http.post<Profile[]>(this.adminapi + '/search/', data);
+  }
+  getProfile(id: string): Observable<Profile> {
+    return this.http.get<Profile>(this.profileapi + '/' + id);
+  }
+  create(profile: Profile): Observable<string> {
+    return this.http.post<string>(this.profileapi + '/', profile);
+  }
+  update(profile: Profile): Observable<Profile> {
+    return this.http.put<Profile>(this.profileapi + '/', profile);
+  }
   public bindLookups(fields: FormlyFieldConfig[]) {
     const lookups: lookup[] = [];
     this.extractLookups(fields, lookups);
     return this.getAllLookups().pipe(
-      map(allLookups =>
-        allLookups.filter(m =>
-          lookups.some(n => n.categoryId == m.categoryId))),
-      map(filteredLookups => {
+      map((allLookups) =>
+        allLookups.filter((m) =>
+          lookups.some((n) => n.categoryId == m.categoryId)
+        )
+      ),
+      map((filteredLookups) => {
         this._bindLookups(fields, filteredLookups);
         return fields;
-      }));
+      })
+    );
   }
 
-  _bindLookups(
-    fields: FormlyFieldConfig[],
-    lookups: lookup[]
-  ) {
+  _bindLookups(fields: FormlyFieldConfig[], lookups: lookup[]) {
     fields.forEach((f) => {
       if (f.fieldGroup && f.fieldGroup.length > 0) {
         this._bindLookups(f.fieldGroup, lookups);
@@ -49,8 +73,8 @@ export class DataService {
       if (f.templateOptions?.['lookup']) {
         const templateOptions = f.templateOptions;
         f.templateOptions.options = lookups.filter(
-          
-          (lookup) => lookup.categoryId === templateOptions?.['lookup']?.['categoryId']
+          (lookup) =>
+            lookup.categoryId === templateOptions?.['lookup']?.['categoryId']
         );
       }
     });
@@ -83,7 +107,7 @@ export class DataService {
       return f;
     });
   }
- 
+
   getoptions() {
     return [
       {
@@ -175,5 +199,71 @@ export class DataService {
       { label: 'Pear', value: 'Pear', disabled: false },
       { label: 'Orange', value: 'Orange' },
     ];
-  } 
+  }
+  initProfile() {
+    return {
+      email: '',
+      empId: '',
+      mobile: '',
+      name: '',
+      skills: [
+        { name: 'HTML, CSS and Javascript', proficiency: 0, isTechnical: true },
+        { name: 'Angular', proficiency: 0, isTechnical: true },
+        { name: 'React', proficiency: 0, isTechnical: true },
+        { name: 'ASP.NET Core', proficiency: 0, isTechnical: true },
+        { name: 'Restful', proficiency: 0, isTechnical: true },
+        { name: 'Entity Framework', proficiency: 0, isTechnical: true },
+        { name: 'Git', proficiency: 0, isTechnical: true },
+        { name: 'Docker', proficiency: 0, isTechnical: true },
+        { name: 'Jenkins', proficiency: 0, isTechnical: true },
+        { name: 'Azure', proficiency: 0, isTechnical: true },
+        { name: 'Spoken', proficiency: 0, isTechnical: false },
+        { name: 'Aptitude', proficiency: 0, isTechnical: false },
+        { name: 'Communication', proficiency: 0, isTechnical: false },
+      ],
+    };
+  }
+  mapToProfile(profileVm: ProfileVM): Profile {
+    const profile: Profile = this.initProfile();
+    profile.email = profileVm.email;
+    profile.empId = profileVm.empId;
+    profile.name = profileVm.name;
+    profile.mobile = profileVm.mobile;
+    profile.skills[0].proficiency = profileVm.tech1;
+    profile.skills[1].proficiency = profileVm.tech2;
+    profile.skills[2].proficiency = profileVm.tech3;
+    profile.skills[3].proficiency = profileVm.tech4;
+    profile.skills[4].proficiency = profileVm.tech5;
+    profile.skills[5].proficiency = profileVm.tech6;
+    profile.skills[6].proficiency = profileVm.tech7;
+    profile.skills[7].proficiency = profileVm.tech8;
+    profile.skills[8].proficiency = profileVm.tech9;
+    profile.skills[9].proficiency = profileVm.tech10;
+    profile.skills[10].proficiency = profileVm.nontech1;
+    profile.skills[11].proficiency = profileVm.nontech2;
+    profile.skills[12].proficiency = profileVm.nontech3;
+    return profile;
+  }
+  mapToProfileVM(profile: Profile): ProfileVM {
+    const profileVm: ProfileVM = {
+      email: profile.email,
+      empId: profile.empId,
+      name: profile.name,
+      mobile: profile.mobile,
+      tech1: profile.skills[0].proficiency,
+      tech2: profile.skills[1].proficiency,
+      tech3: profile.skills[2].proficiency,
+      tech4: profile.skills[3].proficiency,
+      tech5: profile.skills[4].proficiency,
+      tech6: profile.skills[5].proficiency,
+      tech7: profile.skills[6].proficiency,
+      tech8: profile.skills[7].proficiency,
+      tech9: profile.skills[8].proficiency,
+      tech10: profile.skills[9].proficiency,
+      nontech1: profile.skills[10].proficiency,
+      nontech2: profile.skills[11].proficiency,
+      nontech3: profile.skills[12].proficiency,
+    };
+    return profileVm;
+  }
 }

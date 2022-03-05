@@ -2,450 +2,246 @@
   {
     "type": "grid",
     "templateOptions": {
-      "span": 8
+      "span": 6
     },
     "fieldGroup": [
       {
-        "key": "firstName",
+        "key": "empId",
         "type": "input",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-6",
         "templateOptions": {
-          "label": "Enter your first name",
-          "placeholder": "Enter your name",
-          "required": true,
-          "input": {
-            "addOnAfterIcon": "user",
-            "addOnBeforeIcon": "setting",
-            "prefixIcon": "user",
-            "suffixIcon": "lock"
-          }
+          "label": "Associate Id",
+          "placeholder": "Enter your associate Id",
+          "required": true
         }
       },
       {
-        "key": "lastName",
+        "key": "name",
         "type": "input",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-6",
         "templateOptions": {
-          "label": "Enter your first name",
+          "label": "Name",
           "placeholder": "Enter your name",
-          "required": true,
-          "input": {
-            "addOnAfterIcon": "user",
-            "addOnBeforeIcon": "setting",
-            "prefixIcon": "user",
-            "suffixIcon": "lock"
-          },
-          "expressionProperties": {
-            "templateOptions.disabled": "!model.firstName"
-          }
+          "required": true
         }
       },
       {
-        "key": "password",
+        "key": "email",
         "type": "input",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-6",
         "templateOptions": {
-          "type": "password",
-          "label": "password",
-          "placeholder": "Enter your last name",
-          "required": true,
-          "input": {
-            "addOnAfterIcon": "user",
-            "addOnBeforeIcon": "setting",
-            "prefixIcon": "user",
-            "suffixIcon": "lock"
-          }
+          "label": "Email",
+          "placeholder": "Enter your mail id",
+          "required": true
+        }
+      },
+      {
+        "key": "mobile",
+        "type": "input",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-6",
+        "templateOptions": {
+          "label": "Mobile No",
+          "placeholder": "Enter your mobile no",
+          "required": true
         }
       }
     ]
-  },
+  }, 
+
   {
-    "type": "grid",
+    "className": "ant-col ant-col-xs-24 ant-col-xl-24",
+    "fieldGroupClassName": "ant-row",
     "templateOptions": {
-      "span": 8
+      "card": {
+        "title": "Technical Skills"
+      }
     },
+    "wrappers": ["card"],
+
     "fieldGroup": [
       {
-        "key": "date",
-        "type": "date",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+        "key": "tech1",
+        "type": "slider",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-24",
+        "templateOptions": {
+          "placeholder": "",
+          "label": "HTML, CSS and Javascript",
+          "slider": {
+            "min":0,
+            "max":20
+          }
+        }
+      },
+      {
+        "key": "tech2",
+        "type": "slider",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-24",
         "templateOptions": {
           "placeholder": "123123123123",
-          "label": "date",
-          "date": {
-            "mode": "date",
-            "showTime": true
+          "label": "Angular",
+          "slider": {
+            "min":0,
+            "max":20
           }
         }
       },
       {
-        "key": "range-date",
-        "type": "date",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+        "key": "tech3",
+        "type": "slider",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-24",
         "templateOptions": {
-          "type": "range",
-          "placeholder": ["123", "sdf"],
-          "label": "range-date",
-          "range": {
-            "mode": "date"
+          "placeholder": "123123123123",
+          "label": "React",
+          "slider": {
+            "min":0,
+            "max":20
           }
         }
       },
       {
-        "key": "time",
-        "type": "time",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+        "key": "tech4",
+        "type": "slider",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-24",
         "templateOptions": {
-          "placeholder": ["123", "sdf"],
-          "label": "time",
-          "time": {}
-        }
-      }
-    ]
-  },
-  {
-    "type": "grid",
-    "templateOptions": {
-      "span": 8
-    },
-    "fieldGroup": [
-      {
-        "key": "personage",
-        "type": "number",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
-        "templateOptions": {
-          "label": "How old are you?",
-          "placeholder": "Enter your age",
-          "required": true,
-          "number": {
-            "step": 2,
-            "precision": 1,
-            "width": "100%",
-            "formatter": ""
+          "placeholder": "123123123123",
+          "label": "ASP.NET Core",
+          "slider": {
+            "min":0,
+            "max":20
           }
         }
       },
       {
-        "key": "city",
-        "type": "autoComplete",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+        "key": "tech5",
+        "type": "slider",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-24",
         "templateOptions": {
-          "label": "City",
-          "placeholder": "Choose your city",
-          "required": true,
-          "lookup": { "id": 1, "desc": "sample", "categoryId": 3 },
-          "autoComplete": {
-            "addOnAfterIcon": "user",
-            "addOnBeforeIcon": "setting",
-            "prefixIcon": "user",
-            "suffixIcon": "lock",
-            "backfill": true,
-            "defaultActiveFirstOption": true
-          },
-          "grid": {
-            "span": 8
+          "placeholder": "123123123123",
+          "label": "Restful",
+          "slider": {
+            "min":0,
+            "max":20
           }
         }
       },
       {
-        "key": "cascader",
-        "type": "cascader",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
-        "defaultValue": ["zhejiang", "hangzhou", "xihu"],
+        "key": "tech6",
+        "type": "slider",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-24",
         "templateOptions": {
-          "label": "cascader",
-          "required": true,
-          "cascader": {
-            "expandTrigger": "hover",
-            "expandIcon": "user"
-          },
-          "grid": {
-            "span": 8
-          }
-        }
-      }
-    ]
-  },
-  {
-    "type": "grid",
-    "templateOptions": {
-      "span": 8
-    },
-    "fieldGroup": [
-      {
-        "key": "fruit",
-        "type": "select",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
-        "templateOptions": {
-          "placeholder": "select any fruit",
-          "label": "select",
-          "multiple": true,
-          "lookup": { "id": 1, "desc": "sample", "categoryId": 1 },
-          "options": "",
-          "select": {
-            "showArrow": true,
-            "showSearch": true,
-            "allowClear": true,
-            "loading": false,
-            "maxMultipleCount": 2
+          "placeholder": "123123123123",
+          "label": "Entity Framework",
+          "slider": {
+            "min":0,
+            "max":20
           }
         }
       },
       {
-        "key": "tree-select",
-        "type": "tree-select",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+        "key": "tech7",
+        "type": "slider",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-24",
         "templateOptions": {
-          "label": "tree-select",
-          "spanLabelFixed": 100,
-          "required": true,
-          "treeSelect": {}
-        }
-      },
-      {
-        "key": "radio",
-        "type": "radio",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
-        "defaultValue": "Apple",
-        "templateOptions": {
-          "required": true,
-          "label": "radio",
-          "type": "button",
-          "radio": {
-            "buttonStyle": "solid",
-            "name": "test"
-          },
-          "options": ""
-        }
-      }
-    ]
-  },
-  {
-    "type": "grid",
-    "templateOptions": {
-      "span": 8
-    },
-    "fieldGroup": [
-      {
-        "key": "checkbox",
-        "type": "checkbox",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
-        "templateOptions": {
-          "label": "checkbox_group",
-          "type": "group",
-          "required": true,
-          "options": "",
-          "checkbox": {},
-          "grid": {
-            "span": 8
+          "placeholder": "123123123123",
+          "label": "Git",
+          "slider": {
+            "min":0,
+            "max":20
           }
         }
       },
       {
-        "key": "checkbox2",
-        "type": "checkbox",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
-        "defaultValue": true,
+        "key": "tech8",
+        "type": "slider",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-24",
         "templateOptions": {
-          "required": true,
-          "placeholder": "checkbox select",
-          "checkbox": {}
+          "placeholder": "123123123123",
+          "label": "Docker",
+          "slider": {
+            "min":0,
+            "max":20
+          }
         }
       },
-
       {
-        "key": "rate",
-        "type": "rate",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-8",
+        "key": "tech9",
+        "type": "slider",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-24",
         "templateOptions": {
-          "required": true,
-          "label": "rate",
-          "rate": {
-            "allowHalf": true
+          "placeholder": "123123123123",
+          "label": "Jenkins",
+          "slider": {
+            "min":0,
+            "max":20
+          }
+        }
+      },
+      {
+        "key": "tech10",
+        "type": "slider",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-24",
+        "templateOptions": {
+          "placeholder": "123123123123",
+          "label": "Azure",
+          "slider": {
+            "min":0,
+            "max":20
           }
         }
       }
     ]
-  },
-  {
-    "type": "grid",
-    "templateOptions": {
-      "span": 12
-    },
-    "fieldGroup": [
-      {
-        "key": "desc",
-        "type": "textarea",
-        "className": "ant-col ant-col-xs-24 ant-col-xl-12",
-        "templateOptions": {
-          "label": "Long Description",
-          "required": true,
-          "textarea": {
-            "maxCharacterCount": 100
-          }
-        }
-      }
-    ]
-  },
-
-  {
-    "key": "slider",
-    "type": "slider",
-    "className": "ant-col  ant-col-8",
-    "templateOptions": {
-      "placeholder": "123123123123",
-      "label": "slider",
-      "slider": {}
-    }
-  },
-  {
-    "key": "switch",
-    "type": "switch",
-    "className": "ant-col  ant-col-8",
-    "templateOptions": {
-      "placeholder": "123123123123",
-      "label": "switch",
-      "switch": {}
-    }
-  },
-
-  {
-    "key": "upload",
-    "type": "upload",
-    "className": "ant-col  ant-col-8",
-    "defaultValue": [1, 2, 3, 4],
-    "templateOptions": {
-      "label": "upload",
-      "spanLabelFixed": 100,
-      "required": true,
-      "upload": {
-        "action": "https://localhost:44310/WeatherForecast1"
-      }
-    }
   },
   {
     "className": "ant-col ant-col-xs-24 ant-col-xl-24",
     "fieldGroupClassName": "ant-row",
     "templateOptions": {
       "card": {
-        "title": "Card form"
+        "title": "Non-Technical Skills"
       }
     },
     "wrappers": ["card"],
-    "fieldGroup": [
-      {
-        "className": "ant-col ant-col-xs-24 ant-col-xl-12",
-        "type": "input",
-        "key": "firstName",
-        "templateOptions": {
-          "label": "First Name"
-        }
-      },
-      {
-        "className": "ant-col ant-col-xs-24 ant-col-xl-12",
-        "type": "input",
-        "key": "lastName",
-        "templateOptions": {
-          "label": "Last Name"
-        }
-      }
-    ]
-  },
-  {
-    "type": "tabs",
-    "className": "ant-col ant-col-xs-24 ant-col-xl-24",
-    "templateOptions": {
-      "tabs": {
-        "tabPosition": "top"
-      }
-    },
-    "fieldGroup": [
-      {
-        "templateOptions": {
-          "label": "Personal data",
 
-          "tab": {
-            "disabled": true
-          }
-        },
-        "fieldGroup": [
-          {
-            "key": "firstname",
-            "type": "input",
-            "templateOptions": {
-              "label": "First name",
-              "required": true
-            }
-          },
-          {
-            "key": "age",
-            "type": "input",
-            "templateOptions": {
-              "type": "number",
-              "label": "Age",
-              "required": true,
-              "number": {
-                "step": 2,
-                "precision": 1,
-                "width": "100%"
-              }
-            }
-          }
-        ]
-      },
-      {
-        "templateOptions": { "label": "Destination" },
-        "fieldGroup": [
-          {
-            "key": "country",
-            "type": "input",
-            "templateOptions": {
-              "label": "Country",
-              "required": true
-            }
-          }
-        ]
-      },
-      {
-        "templateOptions": { "label": "Day of the trip" },
-        "fieldGroup": [
-          {
-            "key": "day",
-            "type": "date",
-            "templateOptions": {
-              "type": "date",
-              "label": "Day of the trip",
-              "required": true
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "wrappers": ["input-group"],
-    "className": "ant-col  ant-col-8",
-
-    "templateOptions": {
-      "label": "input-group",
-      "required": true
-    },
     "fieldGroup": [
       {
-        "type": "input",
-        "key": "inputtest1",
+        "key": "nontech1",
+        "type": "slider",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-24",
         "templateOptions": {
-          "required": true
-        },
-        "expressionProperties": {}
+          "placeholder": "",
+          "label": "Spoken",
+          "slider": {
+            "min":0,
+            "max":20
+          }
+        }
       },
       {
-        "type": "input",
-        "key": "inputtest2",
+        "key": "nontech2",
+        "type": "slider",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-24",
         "templateOptions": {
-          "required": true
+          "placeholder": "123123123123",
+          "label": "Aptitude",
+          "slider": {
+            "min":0,
+            "max":20
+          }
+        }
+      },
+      {
+        "key": "nontech3",
+        "type": "slider",
+        "className": "ant-col ant-col-xs-24 ant-col-xl-24",
+        "templateOptions": {
+          "placeholder": "123123123123",
+          "label": "Communication",
+          "slider": {
+            "min":0,
+            "max":20
+          }
         }
       }
+     
     ]
   }
 ]

@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { lookup } from '@fse/lookup';
 import { DataService } from '@fse/profile/data';
+import { Profile, ProfileVM } from '@fse/profile/model';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 @Component({
@@ -19,7 +20,8 @@ import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 })
 export class DetailComponent implements OnInit {
   form = new FormGroup({});
-  model: unknown = {};
+  model!: ProfileVM;
+  profile!: Profile;
   constructor(private dataService: DataService,private route: ActivatedRoute) {
    // this.getFields();
   }
@@ -35,7 +37,10 @@ export class DetailComponent implements OnInit {
   
   ngOnInit() {
     this.model = this.route.snapshot.data['fieldData'][1];
-    this.fields = this.mapFields(this.route.snapshot.data['fieldData'][0]);
+   // this.fields = this.mapFields(this.route.snapshot.data['fieldData'][0]);
+   this.fields = this.route.snapshot.data['fieldData'][0];
+   //this.profile =this.dataService.initProfile()
+   //console.log(this.profile)
   }
  
   /**
@@ -148,7 +153,23 @@ export class DetailComponent implements OnInit {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  onSubmit(evt :unknown) {
+  onSubmit(evt :unknown): void {
+    console.log('After Mapping');
+    this.profile =this.dataService.mapToProfile(this.model);
+        
+        
+        //console.log(JSON.stringify(this.profile))
+        this.dataService.create(this.profile).subscribe((data) => {
+          console.log('After save');
+          console.log(data)
+         
+        });;
+//         this.profile.skills= [
+// { proficiency : this.model.tech1, name :'', isTechnical :true },
+// { proficiency : this.model.tech2, name :'', isTechnical :true }
+//         ]
+
+       
     console.log(JSON.stringify(this.model, null, 2));
   }
 }

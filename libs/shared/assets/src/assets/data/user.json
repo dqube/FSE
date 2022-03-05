@@ -1,8 +1,19 @@
 {
-    "firstName": "Joan",
-    "lastName": "of Arc",
-    "password": "test",
-    "desc":"enter some description",
-    "age":22,
-    "city":2
+    "name": "Joan",
+    "email": "abc@gmail.com",
+    "empId": "cts7000",
+    "mobile":"922222222",
+    "tech1": 10,
+    "tech2": 10,
+    "tech3": 10,
+    "tech4": 10,
+    "tech5": 10,
+    "tech6": 10,
+    "tech7": 10,
+    "tech8": 10,
+    "tech9": 10,
+    "tech10": 10,
+    "nontech1": 5,
+    "nontech2": 5,
+    "nontech3": 5 
   }

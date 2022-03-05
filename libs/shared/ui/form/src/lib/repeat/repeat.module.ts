@@ -22,6 +22,10 @@ import { FormlyRepeatComponent } from './repeat.component';
         {
           name: 'repeat',
           component: FormlyRepeatComponent,
+          defaultOptions: {
+            className: 'ant-col  ant-col-12',
+            defaultValue: {}
+          }
         },
         {
           name: 'repeat-action',

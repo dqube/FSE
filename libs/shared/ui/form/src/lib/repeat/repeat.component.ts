@@ -11,11 +11,10 @@ import { FieldArrayType } from '@ngx-formly/core';
   selector: 'formly-field-repeat',
   template: `
     <ng-container
-      *ngFor="let item of field.fieldGroup; index as index; last as last"
-    >
+      *ngFor="let item of field.fieldGroup; index as index; last as last">
       <formly-field [field]="item"></formly-field>
     </ng-container>
-    <a
+    <!-- <a
       *ngIf="to['addBtnIcon'] || to['addBtnText']"
       nz-button
       type="button"
@@ -26,7 +25,7 @@ import { FieldArrayType } from '@ngx-formly/core';
     >
       <i *ngIf="to['addBtnIcon']" nz-icon [nzType]="to['addBtnIcon']"></i>
       <span *ngIf="to['addBtnText']">{{to['addBtnText']}}</span>
-    </a>
+    </a> -->
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -36,6 +35,8 @@ export class FormlyRepeatComponent extends FieldArrayType implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('from repeat control');
+    console.log(this.field);
     Object.assign(this.field.templateOptions, {
       add: (
         index: number,
