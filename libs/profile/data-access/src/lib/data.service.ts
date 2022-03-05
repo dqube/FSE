@@ -1,9 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lookup, LookupService } from '@fse/lookup';
 import { Profile, ProfileVM } from '@fse/profile/model';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -269,5 +269,19 @@ export class DataService {
       nontech3: profile.skills[12].proficiency,
     };
     return profileVm;
+  }
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.error(
+        `Backend returned code ${error.status}, body was: `, error.error);
+    }
+    // Return an observable with a user-facing error message.
+    return throwError(
+      'Something bad happened; please try again later.');
   }
 }

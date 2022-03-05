@@ -61,6 +61,7 @@ export class ListComponent {
     // });
     dataService.getAll().subscribe((data) => {
       console.log(JSON.stringify(data));
+      
       this.profiles = data;
       console.log(' after mapping');
       console.log(this.profiles);
