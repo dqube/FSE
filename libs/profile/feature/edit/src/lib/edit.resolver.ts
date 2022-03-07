@@ -16,12 +16,13 @@ export class EditResolver implements Resolve<unknown> {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<[FormlyFieldConfig[], unknown]> {
+    const id = route.params['id']
     return this.dataService.getFields().pipe(
       mergeMap(fields =>
         this.dataService.bindLookups(fields)
       ),
-      withLatestFrom(
-        this.dataService.getUser()
+      withLatestFrom(        
+        this.dataService.getProfile(id)
       ));
   }
 }

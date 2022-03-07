@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { lookup } from '@fse/lookup';
 import { DataService } from '@fse/profile/data';
 import { Profile, ProfileVM } from '@fse/profile/model';
@@ -23,7 +23,7 @@ export class CreateComponent implements OnInit {
   form = new FormGroup({});
   model!: ProfileVM;
   profile!: Profile;
-  constructor(private dataService: DataService,private route: ActivatedRoute) {
+  constructor(private dataService: DataService,private route: ActivatedRoute, private router:Router) {
    // this.getFields();
   }
   options: FormlyFormOptions = {
@@ -62,6 +62,7 @@ export class CreateComponent implements OnInit {
         this.dataService.create(this.profile).subscribe((data) => {
           console.log('After save');
           console.log(data)
+          this.router.navigate(['profiles']);
          
         });;
 //         this.profile.skills= [

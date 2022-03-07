@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-common',
@@ -164,8 +164,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         text-align: center;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  ]
 })
 export class CommonComponent {
   isCollapsed = false;
